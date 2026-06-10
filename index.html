@@ -120,8 +120,8 @@
      EDIT THESE 4 LINES, THEN THE PAGE IS YOURS.
      ════════════════════════════════════════════════════════════ -->
 <script>
-  const AGENCY  = "Narmis AI Solutions";          // your agency name
-  const EMAIL   = "you@gmail.com";                 // where leads email you
+  const AGENCY  = "WebStudio";                     // your agency name
+  const EMAIL   = "webstudio.outreach@gmail.com";  // where leads email you
   const CITY    = "your city";                     // the area you serve
   const CALENDLY = "";                             // optional: booking link (else email is used)
 </script>
@@ -236,7 +236,7 @@
 </div>
 
 <script>
-  document.getElementById('navBrand').innerHTML = AGENCY.replace(/AI/i, '<span>AI</span>');
+  document.getElementById('navBrand').innerHTML = AGENCY.replace(/(AI|Studio)/i, '<span>$1</span>');
   document.getElementById('heroCity').textContent = CITY;
   document.getElementById('footer').textContent = `© ${new Date().getFullYear()} ${AGENCY} — AI receptionists for local businesses in ${CITY}.`;
   const contactHref = CALENDLY || `mailto:${EMAIL}?subject=${encodeURIComponent('Free AI receptionist demo for my business')}&body=${encodeURIComponent('Hi! My business is: \nMy website is: \nBest number to reach me: ')}`;

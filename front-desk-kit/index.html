@@ -150,11 +150,11 @@
     <div class="row2">
       <div>
         <label>Your agency name</label>
-        <input type="text" id="f_agency" placeholder="Narmis AI Solutions">
+        <input type="text" id="f_agency" value="WebStudio">
       </div>
       <div>
         <label>Your email or booking link</label>
-        <input type="text" id="f_contact" placeholder="you@gmail.com or calendly link">
+        <input type="text" id="f_contact" value="webstudio.outreach@gmail.com">
       </div>
     </div>
   </div>
@@ -297,7 +297,7 @@ function buildCfg() {
     color: $('f_color').value,
     services: parsePairs($('f_svcs').value, 'n', 'p'),
     faqs: parsePairs($('f_faqs').value, 'q', 'a'),
-    agency: $('f_agency').value.trim() || 'Your Agency Name',
+    agency: $('f_agency').value.trim() || 'WebStudio',
     contact: $('f_contact').value.trim(),
   };
 }
