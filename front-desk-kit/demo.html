@@ -489,21 +489,22 @@ function resetChat() {
 /* ---- intent detection for free text ---- */
 function detectIntent(t) {
   t = t.toLowerCase();
-  const has = (...ws) => ws.some(w => t.includes(w));
+  const has = (...ws) => ws.some(w =>
+    new RegExp('\\b' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ +/g, '\\s+')).test(t));
   if (has('book', 'appointment', 'schedule', 'reserve', 'slot', 'come in', 'availab')) return 'book';
-  if (has('price', 'cost', 'how much', 'charge', 'fee', 'service', 'pricing', 'rate')) return 'pricing';
-  if (has('hour', 'open', 'close', 'when are you', 'address', 'where', 'location', 'parking', 'direction')) return 'hours';
-  if (has('human', 'person', 'real', 'someone', 'call me', 'speak', 'talk to')) return 'human';
-  if (has('thank', 'thanks', 'great', 'awesome', 'cool', 'perfect', 'ok', 'okay')) return 'thanks';
-  if (has('hi', 'hello', 'hey', 'yo')) return 'greet';
-  // FAQ match: score by word overlap
+  if (has('price', 'pricing', 'cost', 'how much', 'charge', 'fee', 'service', 'rate', 'menu')) return 'pricing';
+  if (has('hour', 'open', 'close', 'closing', 'when are you', 'address', 'where', 'location', 'parking', 'direction')) return 'hours';
+  if (has('human', 'real person', 'speak to', 'talk to', 'call me', 'someone call', 'a person')) return 'human';
+  // FAQ match before small talk: score by word overlap
   let best = null, bestScore = 0;
   for (const f of cfg.faqs) {
-    const words = f.q.toLowerCase().split(/\W+/).filter(w => w.length > 3);
-    const score = words.filter(w => t.includes(w)).length / Math.max(words.length, 1);
+    const words = [...new Set(f.q.toLowerCase().split(/\W+/).filter(w => w.length > 3))];
+    const score = words.filter(w => has(w)).length / Math.max(words.length, 1);
     if (score > bestScore) { bestScore = score; best = f; }
   }
   if (best && bestScore >= 0.34) return { faq: best };
+  if (t.length < 30 && has('thank', 'thanks', 'awesome', 'perfect', 'cool', 'okay', 'ok')) return 'thanks';
+  if (t.length < 20 && /^(hi|hello|hey|yo|sup|good (morning|afternoon|evening))\b/.test(t.trim())) return 'greet';
   return 'fallback';
 }
 
