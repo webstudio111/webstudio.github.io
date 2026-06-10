@@ -36,7 +36,7 @@ You are not selling "AI". You are selling *"never lose another customer to a mis
 |---|---|
 | `index.html` | **The Demo Factory.** Fill in a prospect's info → get a personalized demo link + ready-to-send outreach messages. This is your weapon. |
 | `demo.html` | The demo itself. Don't edit; the Factory feeds it everything through the link. |
-| `agency.html` | Your one-page agency website. Edit 4 lines at the top (name, email, city, booking link) and it's yours. |
+| the homepage (`index.html` in the repo root) | Your one-page agency website. Edit 4 lines at the top (name, email, city, booking link) and it's yours. |
 | `PLAYBOOK.md` | This file. |
 
 **Why the demo matters more than anything else:** field data from agencies doing this says personalized demos beat generic pitches **~4-to-1**, live demos close **3× more** than decks, and *"the moment a skeptical business owner sees the AI answer a question about their business correctly, the sale is 80% closed."* Most people selling this stuff send generic pitches. You'll send a working product with their name on it.
@@ -46,7 +46,7 @@ You are not selling "AI". You are selling *"never lose another customer to a mis
 ## 2. One-time setup (~30 minutes, you do this part)
 
 1. **Host the kit free on GitHub Pages:** repo Settings → Pages → deploy from branch → pick the branch and `/ (root)`. Your kit becomes `https://yourname.github.io/repo/front-desk-kit/`. Demo links you generate will work for anyone, forever, free.
-2. **Edit `agency.html`** — the 4 lines at the top. Pick an agency name (anything professional: "[YourCity] AI Front Desk" works great).
+2. **Edit the homepage (`index.html` in the repo root)** — the 4 lines at the top. Pick an agency name (anything professional: "[YourCity] AI Front Desk" works great).
 3. **Make a free business email** (Gmail is fine to start: `narmis.aifrontdesk@gmail.com`).
 4. **Get a free link shortener account** so demo links look clean in DMs.
 5. **Payments:** a free **Stripe** account (payment links — no website needed) or **PayPal invoices**. You only need this when someone says yes, so don't stall on it.
@@ -153,7 +153,7 @@ Start cheap: first client on a free/low tier, upgrade as revenue arrives. **Plat
 ## 9. After client #1
 
 1. **Collect the numbers monthly** — leads captured, after-hours bookings. Send a 3-line monthly report. This is why they never cancel.
-2. **Turn it into a case study** — "Bella Salon captured 23 leads in 30 days, 9 after closing time" — put it on `agency.html`, use it in every future pitch.
+2. **Turn it into a case study** — "Bella Salon captured 23 leads in 30 days, 9 after closing time" — put it on the homepage (`index.html` in the repo root), use it in every future pitch.
 3. **Ask for 2 referrals** — "Who else do you know who hates missing calls?" Local owners all know each other. Referrals close at ~50%.
 4. **Partner with one web designer** — they have clients who need this, you split the setup fee. One good partner = deal flow forever.
 5. **Raise prices every 3 clients.**
@@ -162,7 +162,7 @@ Start cheap: first client on a free/low tier, upgrade as revenue arrives. **Plat
 
 ## 10. The first 14 days
 
-- **Day 1:** Host kit on GitHub Pages, edit `agency.html`, make email + shortener accounts. ✅ Setup done.
+- **Day 1:** Host kit on GitHub Pages, edit the homepage (`index.html` in the repo root), make email + shortener accounts. ✅ Setup done.
 - **Day 2:** Pick the niche. Build the 25–30 prospect list.
 - **Day 3–4:** Generate demos + send 10/day. Message every business owner you know personally.
 - **Day 5–9:** Keep sending 10/day. Reply fast to anything that moves. Book meetings.
@@ -183,6 +183,6 @@ You're not doing this alone. Come back any time for:
 - Tweaking demo presets for new industries
 - Building each client's real chatbot knowledge base from their site content
 - Writing the monthly client reports
-- Building case-study pages and improving `agency.html` as you grow
+- Building case-study pages and improving the homepage (`index.html` in the repo root) as you grow
 
 You do the human parts: send, talk, close. I do everything else.
