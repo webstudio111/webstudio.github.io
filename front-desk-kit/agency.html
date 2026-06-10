@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Never miss another customer — AI receptionists for local businesses</title>
+<style>
+  :root {
+    --bg: #0c0f16;
+    --card: #141927;
+    --line: rgba(255,255,255,0.09);
+    --text: #e8ecf6;
+    --dim: #8a93ab;
+    --accent: #0ea5e9;
+    --green: #22c55e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, "Segoe UI", Roboto, Inter, sans-serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0;
+  }
+  nav .brand { font-weight: 800; font-size: 17px; }
+  nav .brand span { color: var(--accent); }
+  nav a.cta {
+    background: var(--accent); color: #fff; text-decoration: none;
+    font-weight: 700; font-size: 13.5px; padding: 10px 18px; border-radius: 9px;
+  }
+  /* hero */
+  .hero { text-align: center; padding: 70px 0 60px; }
+  .hero .pill {
+    display: inline-block; font-size: 12px; font-weight: 700;
+    color: var(--green); border: 1px solid rgba(34,197,94,0.4);
+    background: rgba(34,197,94,0.08);
+    padding: 6px 14px; border-radius: 20px; margin-bottom: 22px;
+  }
+  .hero h1 { font-size: clamp(30px, 5.5vw, 50px); line-height: 1.12; letter-spacing: -1px; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p { color: var(--dim); font-size: 17px; max-width: 600px; margin: 20px auto 0; }
+  .hero .btns { margin-top: 34px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    text-decoration: none; font-weight: 700; font-size: 15px;
+    padding: 14px 28px; border-radius: 11px;
+  }
+  .btn.primary { background: var(--accent); color: #fff; box-shadow: 0 8px 30px rgba(14,165,233,0.35); }
+  .btn.ghost { border: 1px solid var(--line); color: var(--text); background: rgba(255,255,255,0.04); }
+  /* stats band */
+  .band {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    padding: 10px 0 60px;
+  }
+  .band .b {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 22px; text-align: center;
+  }
+  .band .n { font-size: 30px; font-weight: 800; color: var(--accent); }
+  .band .l { font-size: 13px; color: var(--dim); margin-top: 4px; }
+  /* sections */
+  section { padding: 50px 0; }
+  section h2 { font-size: 28px; text-align: center; margin-bottom: 8px; }
+  section .sub { text-align: center; color: var(--dim); margin-bottom: 40px; font-size: 15px; }
+  .steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 26px 24px;
+  }
+  .step .num {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(14,165,233,0.15); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; margin-bottom: 14px;
+  }
+  .step b { font-size: 16px; display: block; margin-bottom: 6px; }
+  .step p { font-size: 13.5px; color: var(--dim); }
+  /* pricing */
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+  .plan {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+    padding: 30px 26px; display: flex; flex-direction: column;
+  }
+  .plan.hot { border-color: var(--accent); position: relative; box-shadow: 0 10px 50px rgba(14,165,233,0.18); }
+  .plan.hot::before {
+    content: "MOST POPULAR"; position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+    background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 1.5px;
+    padding: 4px 12px; border-radius: 12px;
+  }
+  .plan h3 { font-size: 15px; }
+  .plan .price { font-size: 34px; font-weight: 800; margin: 12px 0 2px; }
+  .plan .per { font-size: 12.5px; color: var(--dim); margin-bottom: 18px; }
+  .plan ul { list-style: none; flex: 1; }
+  .plan li { font-size: 13.5px; color: #b9c2d8; padding: 6px 0 6px 24px; position: relative; }
+  .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 800; }
+  .plan a {
+    margin-top: 22px; text-align: center; text-decoration: none;
+    border: 1px solid var(--accent); color: var(--accent); font-weight: 700;
+    padding: 12px; border-radius: 10px; font-size: 14px;
+  }
+  .plan.hot a { background: var(--accent); color: #fff; }
+  /* guarantee + contact */
+  .guarantee {
+    background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(14,165,233,0.06));
+    border: 1px solid rgba(34,197,94,0.3); border-radius: 16px;
+    padding: 30px; text-align: center; font-size: 15px;
+  }
+  .guarantee b { color: var(--green); }
+  footer { text-align: center; padding: 50px 0 40px; color: var(--dim); font-size: 13px; }
+  @media (max-width: 760px) {
+    .band, .steps3, .plans { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<!-- ════════════════════════════════════════════════════════════
+     EDIT THESE 4 LINES, THEN THE PAGE IS YOURS.
+     ════════════════════════════════════════════════════════════ -->
+<script>
+  const AGENCY  = "Narmis AI Solutions";          // your agency name
+  const EMAIL   = "you@gmail.com";                 // where leads email you
+  const CITY    = "your city";                     // the area you serve
+  const CALENDLY = "";                             // optional: booking link (else email is used)
+</script>
+
+<div class="wrap">
+  <nav>
+    <div class="brand" id="navBrand">— <span>AI</span></div>
+    <a class="cta" id="navCta" href="#contact">Book a free demo</a>
+  </nav>
+
+  <div class="hero">
+    <div class="pill">● Now onboarding businesses in <span id="heroCity">—</span></div>
+    <h1>Your business is losing customers<br>every time the phone <em>rings out</em>.</h1>
+    <p>We install an AI receptionist on your website and phone line that answers instantly,
+    books appointments, and captures every lead — 24 hours a day, including when you're closed.</p>
+    <div class="btns">
+      <a class="btn primary" id="heroCta" href="#contact">Get a free live demo for your business</a>
+      <a class="btn ghost" href="#pricing">See pricing</a>
+    </div>
+  </div>
+
+  <div class="band">
+    <div class="b"><div class="n">$126k</div><div class="l">what missed calls cost the average small business every year</div></div>
+    <div class="b"><div class="n">62%</div><div class="l">of callers won't leave a voicemail — they call your competitor</div></div>
+    <div class="b"><div class="n">78%</div><div class="l">of customers buy from the business that responds first</div></div>
+  </div>
+
+  <section>
+    <h2>How it works</h2>
+    <p class="sub">Live on your website in under a week. Zero effort on your side.</p>
+    <div class="steps3">
+      <div class="step">
+        <div class="num">1</div>
+        <b>We learn your business</b>
+        <p>Your services, prices, hours, FAQs — everything your front desk knows, the AI knows. You approve every answer before launch.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <b>We install it</b>
+        <p>One line of code on your website (we handle it). Optionally connected to your phone line so missed calls get an instant text back.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <b>You get the leads</b>
+        <p>Every booking and enquiry lands in your phone by text, instantly — with name, number and what they want. You just show up.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <h2>Simple pricing</h2>
+    <p class="sub">No contracts. Cancel anytime. Setup is one-time.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Website Assistant</h3>
+        <div class="price">$297</div>
+        <div class="per">setup, then $99/mo</div>
+        <ul>
+          <li>AI chat assistant on your website</li>
+          <li>Trained on your services & FAQs</li>
+          <li>Captures leads & booking requests 24/7</li>
+          <li>Instant text alerts to your phone</li>
+          <li>Monthly performance summary</li>
+        </ul>
+        <a href="#contact">Start here</a>
+      </div>
+      <div class="plan hot">
+        <h3>Front Desk Complete</h3>
+        <div class="price">$497</div>
+        <div class="per">setup, then $199/mo</div>
+        <ul>
+          <li>Everything in Website Assistant</li>
+          <li>Missed-call instant text-back</li>
+          <li>Real appointment booking into your calendar</li>
+          <li>After-hours & weekend coverage</li>
+          <li>Priority support & monthly tune-ups</li>
+        </ul>
+        <a href="#contact">Book a demo</a>
+      </div>
+      <div class="plan">
+        <h3>AI Phone Receptionist</h3>
+        <div class="price">$997</div>
+        <div class="per">setup, then $299/mo</div>
+        <ul>
+          <li>Everything in Front Desk Complete</li>
+          <li>AI answers your actual phone calls</li>
+          <li>Natural voice, books while you work</li>
+          <li>Call transcripts & summaries</li>
+          <li>Multi-location support</li>
+        </ul>
+        <a href="#contact">Talk to us</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="guarantee">
+      🛡️ <b>The no-brainer guarantee:</b> if your AI receptionist doesn't capture at least
+      <b>5 real leads in the first 30 days</b>, you get the setup fee back. Every penny.
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>See it answer <em>your</em> customers' questions</h2>
+    <p class="sub">We'll build a free working demo for your business — before you pay a cent.</p>
+    <div class="btns" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a class="btn primary" id="contactBtn" href="#">📧 Request my free demo</a>
+    </div>
+  </section>
+
+  <footer id="footer">© 2026 — AI receptionists for local businesses.</footer>
+</div>
+
+<script>
+  document.getElementById('navBrand').innerHTML = AGENCY.replace(/AI/i, '<span>AI</span>');
+  document.getElementById('heroCity').textContent = CITY;
+  document.getElementById('footer').textContent = `© ${new Date().getFullYear()} ${AGENCY} — AI receptionists for local businesses in ${CITY}.`;
+  const contactHref = CALENDLY || `mailto:${EMAIL}?subject=${encodeURIComponent('Free AI receptionist demo for my business')}&body=${encodeURIComponent('Hi! My business is: \nMy website is: \nBest number to reach me: ')}`;
+  document.getElementById('contactBtn').href = contactHref;
+</script>
+</body>
+</html>
