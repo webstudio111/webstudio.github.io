@@ -12,7 +12,7 @@ A complete, zero-cost starter kit for selling **AI receptionists to local busine
 |---|---|
 | [`index.html`](index.html) | **Demo Factory** — prospect info in, personalized demo link + outreach messages out |
 | [`demo.html`](demo.html) | The personalized demo prospects see (branded mini-site + working AI receptionist + live lead feed) |
-| [`agency.html`](agency.html) | Your agency's one-page website — edit 4 lines at the top |
+| [`../index.html`](../index.html) | Your agency's one-page website (the site homepage) — edit 4 lines at the top |
 | [`PLAYBOOK.md`](PLAYBOOK.md) | The full operator manual: niche, outreach, scripts, pricing, objections, fulfillment, first 14 days |
 
 ## Quick start
