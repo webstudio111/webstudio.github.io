@@ -24,7 +24,12 @@
       "hook": "Am văzut că Eclipse Studio e deschis 7 zile din 7, de la 07:30 dimineața — un program impresionant, dar și foarte multe ore în care telefonul sună în timp ce stiliștii au mâinile ocupate",
       "todo": "Culoare brand de pe eclipsestudio.ro",
       "social": "IG @eclipsestudiocluj · FB /EclipseStudio.ro",
-      "sources": ["https://eclipsestudio.ro/servicii/", "https://eclipsestudio.ro/", "https://deschis.ro/cluj-napoca/eclipse-studio-98630"]
+      "sources": [
+        "https://eclipsestudio.ro/servicii/",
+        "https://eclipsestudio.ro/",
+        "https://deschis.ro/cluj-napoca/eclipse-studio-98630"
+      ],
+      "email": "eclipsestudio@eclipsestudio.ro"
     },
     {
       "biz": "Downtown Beauty",
@@ -38,7 +43,12 @@
       "hook": "Am văzut că la Downtown Beauty programările vin pe mai multe canale — telefon, Stailer, MERO — și e ușor ca un client grăbit din The Office să rămână fără răspuns",
       "todo": "Culoare brand de pe downtownbeauty.ro",
       "social": "IG @downtownbeautycluj",
-      "sources": ["https://downtownbeauty.ro/servicii-coafor/", "https://downtownbeauty.ro/", "https://cluj.com/articole/abonamente-la-downtown-beauty/"]
+      "sources": [
+        "https://downtownbeauty.ro/servicii-coafor/",
+        "https://downtownbeauty.ro/",
+        "https://cluj.com/articole/abonamente-la-downtown-beauty/"
+      ],
+      "email": "salon.theoffice@downtownbeauty.ro"
     },
     {
       "biz": "Ego Studio",
@@ -50,9 +60,14 @@
       "svcs": "Pachet tuns femei | 200 RON\nVopsit rădăcini | de la 300 RON\nBalayage / ombré | 650–1.600 RON\nCoafare nuntă | 350–550 RON\nSchimbare completă de culoare | până la 1.800 RON",
       "faqs": "Cum mă pot programa? | Cel mai simplu: lasă-mi aici numele și numărul tău, plus serviciul dorit, și te sunăm noi să confirmăm — chiar dacă scrii la miezul nopții.\nFaceți și machiaj sau unghii? | Da — pe lângă coafor avem make-up, unghii tehnice, microblading, pedichiură spa și masaj.\nSunteți deschiși în weekend? | Sâmbăta între 09:00 și 14:00, duminica suntem închiși — dar eu îți pot prelua programarea oricând, inclusiv duminica.",
       "hook": "Am văzut că la Ego Studio programările se fac telefonic, iar sâmbăta închideți la 14:00 și duminica e liber — exact intervalele în care clienții sună degeaba",
-      "todo": "Culoare brand de pe ego-studio.ro",
+      "todo": "Culoare brand de pe ego-studio.ro + caută email de contact pe site (altfel: DM sau formular)",
       "social": "IG @egostudiocluj · FB /egostudio.cluj",
-      "sources": ["https://ego-studio.ro/tarife/", "https://ego-studio.ro/contact/", "https://stilio.ro/en/salons/ego-studio-cluj/"]
+      "sources": [
+        "https://ego-studio.ro/tarife/",
+        "https://ego-studio.ro/contact/",
+        "https://stilio.ro/en/salons/ego-studio-cluj/"
+      ],
+      "email": ""
     },
     {
       "biz": "Armonia Beauty Salon",
@@ -64,9 +79,14 @@
       "svcs": "Nuanțare / glossing + tuns | 430–530 RON\nVopsit rădăcini + nuanțare | 410–600 RON\nVopsit rădăcini + nuanțare + tuns | 490–690 RON\nDecolorare rădăcini + nuanțare + tuns | 540–740 RON\nBalayage / șuvițe + tuns | 930–1.550 RON",
       "faqs": "La cine mă pot programa? | Avem mai multe stiliste, fiecare cu specializarea ei. Spune-mi ce serviciu dorești și îți recomand persoana potrivită, apoi te programez direct.\nCât durează un balayage? | Între 4 ore și 5 ore și jumătate, în funcție de lungime și tehnică — de aceea e bine să rezervi din timp. Vrei să verific primul loc liber?\nPot să mă programez seara, după program? | Da — eu preiau programări non-stop, iar salonul confirmă a doua zi dimineață.",
       "hook": "Am văzut că la Armonia programările merg direct pe telefoanele stilistelor — ceea ce înseamnă că, în timpul unui balayage de 5 ore, apelurile rămân nepreluate",
-      "todo": "Ore de program reale + culoare brand de pe armoniabeauty.ro",
+      "todo": "Ore de program reale + culoare brand de pe armoniabeauty.ro + caută email de contact pe site (altfel: DM sau formular)",
       "social": "IG @armonia.beautysalon · FB /armoniabeautysalon · MERO",
-      "sources": ["https://armoniabeauty.ro/coafor/", "https://armoniabeauty.ro/contact/", "https://mero.ro/p/salon-armonia"]
+      "sources": [
+        "https://armoniabeauty.ro/coafor/",
+        "https://armoniabeauty.ro/contact/",
+        "https://mero.ro/p/salon-armonia"
+      ],
+      "email": ""
     },
     {
       "biz": "Heaven's Door Beauty Center",
@@ -80,7 +100,11 @@
       "hook": "Am văzut că la Heaven's Door toate programările — de la pensat la laser — trec printr-un singur număr de mobil",
       "todo": "Ore de program reale + culoare brand de pe heavensdoor.ro",
       "social": "FB /heavensdoor.ro",
-      "sources": ["https://www.heavensdoor.ro/preturi.html", "https://www.heavensdoor.ro/contact.html"]
+      "sources": [
+        "https://www.heavensdoor.ro/preturi.html",
+        "https://www.heavensdoor.ro/contact.html"
+      ],
+      "email": "contact@heavensdoor.ro"
     },
     {
       "biz": "Salon Transilvania",
@@ -94,7 +118,12 @@
       "hook": "Cu peste 30 de specialiști și 2.300+ de recenzii de 4,9 stele, Salon Transilvania are probabil cel mai mare volum de programări din Cluj — și fiecare apel pierdut la ore de vârf e un client care încearcă alt salon",
       "todo": "Completează prețuri coafor damă de pe salontransilvania.ro + culoare brand",
       "social": "FB /salontransilvania · Stailer",
-      "sources": ["https://www.salontransilvania.ro/ro", "https://salontransilvania.ro/contact", "https://deschis.ro/cluj-napoca/salon-transilvania-111373"]
+      "sources": [
+        "https://www.salontransilvania.ro/ro",
+        "https://salontransilvania.ro/contact",
+        "https://deschis.ro/cluj-napoca/salon-transilvania-111373"
+      ],
+      "email": "info@salontransilvania.ro"
     },
     {
       "biz": "Salon Alisa",
@@ -106,9 +135,14 @@
       "svcs": "Epilat gambe (ceară unică folosință / zahăr) | 40–60 RON\nÎndreptare cu keratină braziliană |\nBalayage / airtouch |\nTatuaj sprâncene |",
       "faqs": "Lucrați duminica? | Doar cu programare prealabilă — spune-mi ce serviciu dorești și verific dacă putem aranja.\nCe este îndreptarea cu keratină braziliană? | Un tratament care netezește și hrănește părul pentru câteva luni — una dintre specialitățile noastre. Vrei să te programez la o evaluare?\nDe cât timp există salonul? | Din 2004 — peste 20 de ani în același loc, în complexul Hasdeu. Clienții noștri revin de generații întregi.",
       "hook": "Salon Alisa e de peste 20 de ani un reper în Hasdeu — și tocmai saloanele cu clientelă fidelă pierd cel mai mult când un client vechi nu primește răspuns la telefon",
-      "todo": "Completează prețuri de pe salonalisa.ro/tarife + culoare brand",
+      "todo": "Completează prețuri de pe salonalisa.ro/tarife + culoare brand + caută email de contact pe site (altfel: DM sau formular)",
       "social": "FB /coafor.alisa (9.400+ aprecieri)",
-      "sources": ["https://www.salonalisa.ro/tarife", "https://www.salonalisa.ro/", "https://deschis.ro/cluj-napoca/salon-alisa-38891"]
+      "sources": [
+        "https://www.salonalisa.ro/tarife",
+        "https://www.salonalisa.ro/",
+        "https://deschis.ro/cluj-napoca/salon-alisa-38891"
+      ],
+      "email": ""
     },
     {
       "biz": "Salon Muse",
@@ -122,7 +156,12 @@
       "hook": "Cu 3 locații și 22.000 de urmăritori pe Instagram, Salon Muse primește clar mai multe mesaje și apeluri decât poate prelua orice recepție — mai ales când clientul nu știe la ce număr să sune pentru care locație",
       "todo": "IMPORTANT: completează prețurile de pe salonmusecluj.com/tarife înainte de trimitere + culoare brand",
       "social": "IG @salonmusecluj (~22K) · FB /SalonMuse",
-      "sources": ["https://salonmusecluj.com/tarife/", "https://salonmusecluj.com/contact/", "https://www.instagram.com/salonmusecluj/"]
+      "sources": [
+        "https://salonmusecluj.com/tarife/",
+        "https://salonmusecluj.com/contact/",
+        "https://www.instagram.com/salonmusecluj/"
+      ],
+      "email": "salonmusecluj@yahoo.com"
     },
     {
       "biz": "Boudoir Studio Privé",
@@ -134,9 +173,13 @@
       "svcs": "Coafor (preț pe nivel de experiență al stilistului) |\nFrizerie |\nManichiură & pedichiură |\nTratamente faciale |",
       "faqs": "Care e diferența între nivelurile de stilist? | Prețul diferă în funcție de experiența stilistului — așa alegi exact raportul calitate-preț care ți se potrivește. Spune-mi ce buget ai și îți recomand stilistul potrivit.\nAveți trei numere de telefon — pe care să sun? | Pe oricare — sau, și mai simplu, scrie-mi aici și rezolvăm pe loc, fără să mai aștepți la telefon.\nȚineți și cursuri de coafor? | Da, avem o școală de coafor cu program de 6 luni. Vrei detalii despre înscriere sau o programare la salon?",
       "hook": "Am văzut că Boudoir Studio Privé are trei numere de telefon publicate pentru programări — semn că volumul de apeluri e mare și greu de acoperit",
-      "todo": "Completează prețuri de pe boudoirprive.ro (4 pagini de tarife) + culoare brand",
+      "todo": "Completează prețuri de pe boudoirprive.ro (4 pagini de tarife) + culoare brand + caută email de contact pe site (altfel: DM sau formular)",
       "social": "FB /BoudoirStudioPrive",
-      "sources": ["https://www.boudoirprive.ro/lista-preturi-coafor/", "https://www.boudoirprive.ro/contact/"]
+      "sources": [
+        "https://www.boudoirprive.ro/lista-preturi-coafor/",
+        "https://www.boudoirprive.ro/contact/"
+      ],
+      "email": ""
     },
     {
       "biz": "Salon Privée",
@@ -150,7 +193,12 @@
       "hook": "Am văzut că Salon Privée oferă deja programare online 24/7 — pasul firesc următor e ca și întrebările clienților (prețuri, proceduri, pregătirea pentru laser) să primească răspuns instant, nu doar formularele",
       "todo": "Completează prețuri de pe salonprivee.ro + ore reale + culoare brand",
       "social": "FB /salonpriveedebeaute",
-      "sources": ["https://www.salonprivee.ro/", "https://www.salonprivee.ro/contact", "https://nicelocal.ro/cluj-napoca/beauty/salon_privee/"]
+      "sources": [
+        "https://www.salonprivee.ro/",
+        "https://www.salonprivee.ro/contact",
+        "https://nicelocal.ro/cluj-napoca/beauty/salon_privee/"
+      ],
+      "email": "beaute.salon.privee@gmail.com"
     }
   ]
 }

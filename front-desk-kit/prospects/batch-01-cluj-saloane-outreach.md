@@ -40,6 +40,7 @@
 - 📞 0751 388 003 · 📍 Str. Brassai Sámuel 23, Cluj-Napoca
 - 🕐 Lun–Vin 07:30–22:00 · Sâm 07:30–16:00 · Dum 07:30–14:00
 - 📲 IG @eclipsestudiocluj · FB /EclipseStudio.ro
+- ✉️ Email: eclipsestudio@eclipsestudio.ro
 - ⚠️ **De verificat:** Culoare brand de pe eclipsestudio.ro
 - 🔎 Surse: https://eclipsestudio.ro/servicii/ · https://eclipsestudio.ro/ · https://deschis.ro/cluj-napoca/eclipse-studio-98630
 
@@ -91,6 +92,7 @@ WebStudio · webstudio.outreach@gmail.com
 - 📞 0786 994 480 · 📍 Bd. 21 Decembrie 1989 nr. 77, clădirea The Office, Cluj-Napoca
 - 🕐 Lun–Vin 10:00–21:00 · Sâm 10:00–19:00 · Dum 12:00–18:00
 - 📲 IG @downtownbeautycluj
+- ✉️ Email: salon.theoffice@downtownbeauty.ro
 - ⚠️ **De verificat:** Culoare brand de pe downtownbeauty.ro
 - 🔎 Surse: https://downtownbeauty.ro/servicii-coafor/ · https://downtownbeauty.ro/ · https://cluj.com/articole/abonamente-la-downtown-beauty/
 
@@ -142,7 +144,8 @@ WebStudio · webstudio.outreach@gmail.com
 - 📞 0753 556 652 · 📍 Str. Bogdan Petriceicu Hasdeu 117, Cluj-Napoca
 - 🕐 Lun–Vin 10:00–20:00 · Sâm 09:00–14:00 · Dum închis
 - 📲 IG @egostudiocluj · FB /egostudio.cluj
-- ⚠️ **De verificat:** Culoare brand de pe ego-studio.ro
+- ✉️ Email: negăsit — folosește DM-ul sau formularul de pe site
+- ⚠️ **De verificat:** Culoare brand de pe ego-studio.ro + caută email de contact pe site (altfel: DM sau formular)
 - 🔎 Surse: https://ego-studio.ro/tarife/ · https://ego-studio.ro/contact/ · https://stilio.ro/en/salons/ego-studio-cluj/
 
 **🔗 Link demo:**
@@ -193,7 +196,8 @@ WebStudio · webstudio.outreach@gmail.com
 - 📞 0757 058 835 · 📍 Str. Ciocârliei 43-45, Mărăști, Cluj-Napoca
 - 🕐 Cu programare — telefon sau MERO
 - 📲 IG @armonia.beautysalon · FB /armoniabeautysalon · MERO
-- ⚠️ **De verificat:** Ore de program reale + culoare brand de pe armoniabeauty.ro
+- ✉️ Email: negăsit — folosește DM-ul sau formularul de pe site
+- ⚠️ **De verificat:** Ore de program reale + culoare brand de pe armoniabeauty.ro + caută email de contact pe site (altfel: DM sau formular)
 - 🔎 Surse: https://armoniabeauty.ro/coafor/ · https://armoniabeauty.ro/contact/ · https://mero.ro/p/salon-armonia
 
 **🔗 Link demo:**
@@ -244,6 +248,7 @@ WebStudio · webstudio.outreach@gmail.com
 - 📞 0744 435 440 · 📍 Str. Ciocârliei 32-34, Mărăști, Cluj-Napoca (lângă Hotel Paradis)
 - 🕐 Cu programare — sună sau scrie-ne
 - 📲 FB /heavensdoor.ro
+- ✉️ Email: contact@heavensdoor.ro
 - ⚠️ **De verificat:** Ore de program reale + culoare brand de pe heavensdoor.ro
 - 🔎 Surse: https://www.heavensdoor.ro/preturi.html · https://www.heavensdoor.ro/contact.html
 
@@ -295,6 +300,7 @@ WebStudio · webstudio.outreach@gmail.com
 - 📞 0775 156 791 · 📍 Str. Republicii 105, Zorilor, Cluj-Napoca
 - 🕐 Lun–Vin 09:00–21:30 · Sâm 09:00–21:00 · Dum 10:00–20:00
 - 📲 FB /salontransilvania · Stailer
+- ✉️ Email: info@salontransilvania.ro
 - ⚠️ **De verificat:** Completează prețuri coafor damă de pe salontransilvania.ro + culoare brand
 - 🔎 Surse: https://www.salontransilvania.ro/ro · https://salontransilvania.ro/contact · https://deschis.ro/cluj-napoca/salon-transilvania-111373
 
@@ -346,7 +352,8 @@ WebStudio · webstudio.outreach@gmail.com
 - 📞 0745 485 869 · 📍 Str. B.P. Hasdeu 82, Complex Studențesc Hasdeu, Cluj-Napoca
 - 🕐 Lun–Vin 09:00–20:00 · Sâm 09:00–14:00 · Dum cu programare prealabilă
 - 📲 FB /coafor.alisa (9.400+ aprecieri)
-- ⚠️ **De verificat:** Completează prețuri de pe salonalisa.ro/tarife + culoare brand
+- ✉️ Email: negăsit — folosește DM-ul sau formularul de pe site
+- ⚠️ **De verificat:** Completează prețuri de pe salonalisa.ro/tarife + culoare brand + caută email de contact pe site (altfel: DM sau formular)
 - 🔎 Surse: https://www.salonalisa.ro/tarife · https://www.salonalisa.ro/ · https://deschis.ro/cluj-napoca/salon-alisa-38891
 
 **🔗 Link demo:**
@@ -397,6 +404,7 @@ WebStudio · webstudio.outreach@gmail.com
 - 📞 0744 954 058 (Bună Ziua) · 0757 168 396 (Dunării) · 📍 Str. Bună Ziua 39 · Str. Dunării 35, Cluj-Napoca · Florești
 - 🕐 Lun–Vin 10:00–21:00 · Sâm 10:00–16:00
 - 📲 IG @salonmusecluj (~22K) · FB /SalonMuse
+- ✉️ Email: salonmusecluj@yahoo.com
 - ⚠️ **De verificat:** IMPORTANT: completează prețurile de pe salonmusecluj.com/tarife înainte de trimitere + culoare brand
 - 🔎 Surse: https://salonmusecluj.com/tarife/ · https://salonmusecluj.com/contact/ · https://www.instagram.com/salonmusecluj/
 
@@ -448,7 +456,8 @@ WebStudio · webstudio.outreach@gmail.com
 - 📞 0722 390 107 · 📍 Calea Turzii 85, Cluj-Napoca
 - 🕐 Lun–Vin 08:00–21:00 · Sâm 08:00–14:00 · Dum închis
 - 📲 FB /BoudoirStudioPrive
-- ⚠️ **De verificat:** Completează prețuri de pe boudoirprive.ro (4 pagini de tarife) + culoare brand
+- ✉️ Email: negăsit — folosește DM-ul sau formularul de pe site
+- ⚠️ **De verificat:** Completează prețuri de pe boudoirprive.ro (4 pagini de tarife) + culoare brand + caută email de contact pe site (altfel: DM sau formular)
 - 🔎 Surse: https://www.boudoirprive.ro/lista-preturi-coafor/ · https://www.boudoirprive.ro/contact/
 
 **🔗 Link demo:**
@@ -499,6 +508,7 @@ WebStudio · webstudio.outreach@gmail.com
 - 📞 0787 804 849 · 📍 Str. Dávid Ferenc 15, Cluj-Napoca
 - 🕐 Cu programare — online 24/7 sau telefonic
 - 📲 FB /salonpriveedebeaute
+- ✉️ Email: beaute.salon.privee@gmail.com
 - ⚠️ **De verificat:** Completează prețuri de pe salonprivee.ro + ore reale + culoare brand
 - 🔎 Surse: https://www.salonprivee.ro/ · https://www.salonprivee.ro/contact · https://nicelocal.ro/cluj-napoca/beauty/salon_privee/
 
