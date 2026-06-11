@@ -30,6 +30,30 @@ You are not selling "AI". You are selling *"never lose another customer to a mis
 
 ---
 
+## 0.5 România — localization notes (read this, it changes the defaults)
+
+The kit's demos, outreach scripts and your homepage are now in **Romanian** (the Factory has a language switch — keep it on 🇷🇴 for Romanian prospects, flip to 🇬🇧 for the dental-tourism angle below).
+
+**Pricing in RON** (already on your homepage). Don't copy US prices — these are calibrated so the monthly fee is less than one lost customer:
+
+| Package | Instalare | Lunar | Your tool cost |
+|---|---|---|---|
+| Asistent pe site | 690 RON | 149 RON/lună | $0–40/mo |
+| Recepție completă ⭐ | 990 RON | 249 RON/lună | ~$40/mo |
+| Recepționer telefonic AI | 1.990 RON | 399 RON/lună | usage-based |
+
+10 clients on the middle tier ≈ **2.500 RON/month recurring + ~10.000 RON in setup fees collected** — solid money in Romania for a side operation, and prices can rise once you have case studies.
+
+**The premium niche: dental clinics.** Romania is one of Europe's dental-tourism capitals. Clinics serving foreign patients (UK, Germany, Italy, France) lose international leads at night and on weekends — and those patients spend thousands of euros each. For these clinics: make the demo in **English**, pitch "your foreign patients get instant answers in their language, 24/7", and charge **double the standard tier or more**. They can afford it and the ROI math is overwhelming.
+
+**Where Romanian small businesses actually live:** many run on Facebook/Instagram more than on their websites — DMs there land directly with the owner more often than in the US. WhatsApp is also a normal business channel; offering "cererile ajung direct pe WhatsApp-ul tău" is a strong selling point (white-label platforms support WhatsApp delivery).
+
+**Money & paperwork (short version, not legal advice):** Stripe works in Romania; for invoicing real clients you'll eventually want a **PFA** (quick and cheap to register) — fine to validate with the first client or two first, but declare the income. GDPR applies in the EU: the white-label platforms handle compliance (cookie banner + privacy mention on the client's site) — one more reason to use them instead of duct-taping your own stack.
+
+**Qualification tweak for Romania:** plenty of good businesses have a weak website but a strong, active Facebook page with hundreds of reviews. That's still a qualified prospect — the chat assistant can live on even a basic site, and "site + recepționer AI" makes a natural bundle for your web-studio brand.
+
+---
+
 ## 1. What's in this kit
 
 | File | What it is |

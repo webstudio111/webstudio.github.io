@@ -252,9 +252,9 @@
 <body>
 
 <div id="topbar">
-  <span class="live">LIVE DEMO</span>
-  <span class="title">AI receptionist built for <b id="tbBiz">—</b> · prepared by <b id="tbAgency">—</b></span>
-  <span id="hoursToggle" title="See how it handles customers when you're closed">🌙 Try after-hours mode</span>
+  <span class="live" id="tbLive">LIVE DEMO</span>
+  <span class="title" id="tbTitle"></span>
+  <span id="hoursToggle"></span>
 </div>
 
 <div id="stage">
@@ -269,11 +269,11 @@
           <p id="siteTag">—</p>
         </div>
         <section>
-          <h3>Services</h3>
+          <h3 id="siteSvcTitle">Services</h3>
           <div id="siteSvcs"></div>
         </section>
         <section>
-          <h3>Visit us</h3>
+          <h3 id="siteVisitTitle">Visit us</h3>
           <div class="meta" id="siteMeta"></div>
         </section>
       </div>
@@ -287,14 +287,14 @@
           <div class="avatar">💬</div>
           <div class="who">
             <b id="chatBizName">—</b>
-            <span id="chatStatus">Online — replies instantly</span>
+            <span id="chatStatus"></span>
           </div>
           <button id="chatClose">✕</button>
         </div>
         <div id="msgs"></div>
         <div id="quick"></div>
         <div id="inputRow">
-          <input id="chatInput" type="text" placeholder="Type a message…" autocomplete="off">
+          <input id="chatInput" type="text" autocomplete="off">
           <button id="send">➤</button>
         </div>
       </div>
@@ -304,42 +304,31 @@
   <!-- owner's view -->
   <div id="ownerPanel">
     <div class="card">
-      <h2>👀 What you're looking at</h2>
-      <div id="ownerIntro">
-        This is a working preview of an <b>AI receptionist</b> on the
-        <b id="oiBiz">—</b> website. Try it like a customer would:
-        ask about prices, hours, anything — or book an appointment.
-        <b>Try to break it.</b>
-      </div>
+      <h2 id="opLookTitle"></h2>
+      <div id="ownerIntro"></div>
       <div id="statRow">
-        <div class="stat"><div class="n" id="stMsgs">0</div><div class="l">Questions answered</div></div>
-        <div class="stat"><div class="n" id="stLeads">0</div><div class="l">Leads captured</div></div>
-        <div class="stat"><div class="n">&lt;1s</div><div class="l">Response time</div></div>
+        <div class="stat"><div class="n" id="stMsgs">0</div><div class="l" id="stMsgsL"></div></div>
+        <div class="stat"><div class="n" id="stLeads">0</div><div class="l" id="stLeadsL"></div></div>
+        <div class="stat"><div class="n">&lt;1s</div><div class="l" id="stRespL"></div></div>
       </div>
     </div>
 
     <div class="card">
-      <h2>📲 Your phone — leads land here</h2>
+      <h2 id="opPhoneTitle"></h2>
       <div id="leadFeed">
-        <div class="lead-empty">Book an appointment in the chat ← and watch the lead arrive here in real time, exactly like the text message you'd receive.</div>
+        <div class="lead-empty" id="leadEmpty"></div>
       </div>
     </div>
 
     <div class="card">
-      <h2>📉 Why this matters</h2>
-      <div class="facts">
-        · The average small business loses <b>$126,000/yr</b> to missed calls & slow replies<br>
-        · <b>62%</b> of callers won't leave a voicemail — they just call your competitor<br>
-        · <b>78%</b> of customers buy from whoever responds first<br>
-        · This assistant answers in under a second, <b>24/7</b>, including <span id="factClosed">nights &amp; weekends</span>
-      </div>
+      <h2 id="opWhyTitle"></h2>
+      <div class="facts" id="opFacts"></div>
     </div>
 
     <div class="card" id="cta">
-      <h2>🚀 Next step</h2>
-      <p><b id="ctaAgency">—</b> installs this on your real website — trained on your services,
-      your prices, your FAQs — typically <b>live within a week</b>. No changes to your site needed beyond one line of code.</p>
-      <a id="ctaLink" href="#">Get this for my business →</a>
+      <h2 id="opNextTitle"></h2>
+      <p id="ctaText"></p>
+      <a id="ctaLink" href="#"></a>
     </div>
   </div>
 </div>
@@ -347,29 +336,30 @@
 <script>
 'use strict';
 /* ============================================================
-   Personalized AI-receptionist demo.
+   Personalized AI-receptionist demo — bilingual (en / ro).
    All configuration arrives base64-encoded in the URL hash —
    no backend, no database, infinitely shareable.
    ============================================================ */
 
 const DEFAULT_CFG = {
-  biz: 'Sunrise Dental',
-  tag: 'Family & cosmetic dentistry — gentle care, modern tech',
-  owner: 'Dr. Patel',
-  phone: '(512) 555-0188',
-  addr: '1200 S Lamar Blvd, Austin, TX',
-  hours: 'Mon–Fri 8am–5pm · Sat 9am–1pm',
+  lang: 'ro',
+  biz: 'Clinica Dentară Zâmbet',
+  tag: 'Stomatologie pentru toată familia — blând, modern, fără durere',
+  owner: 'Dr. Ionescu',
+  phone: '0722 123 456',
+  addr: 'Str. Mihai Eminescu 24, București',
+  hours: 'Lun–Vin 9:00–19:00 · Sâm 9:00–13:00',
   color: '#0ea5e9',
   services: [
-    { n: 'New patient exam + X-rays', p: '$89' },
-    { n: 'Teeth cleaning', p: '$120' },
-    { n: 'Whitening (in-office)', p: '$349' },
-    { n: 'Emergency visit', p: 'from $150' },
+    { n: 'Consult + plan de tratament', p: '150 RON' },
+    { n: 'Detartraj + periaj profesional', p: '250 RON' },
+    { n: 'Albire profesională', p: '900 RON' },
+    { n: 'Urgență stomatologică', p: 'de la 200 RON' },
   ],
   faqs: [
-    { q: 'Do you take insurance?', a: 'Yes! We accept most major PPO plans including Delta Dental, Cigna and MetLife. Bring your card to your first visit and we\'ll verify everything for you.' },
-    { q: 'Do you see kids?', a: 'Absolutely — we love seeing the whole family. We treat children from age 3 and up.' },
-    { q: 'I have tooth pain, can I come in today?', a: 'We keep same-day slots for emergencies. Let me grab your details and the team will call you right back to fit you in.' },
+    { q: 'Lucrați cu casa de asigurări?', a: 'Da, avem contract cu CAS pentru anumite servicii, iar pentru rest emitem documente pentru decontare. Adu cardul de sănătate la prima vizită și verificăm totul pentru tine.' },
+    { q: 'Tratați și copii?', a: 'Sigur că da — ne ocupăm de toată familia. Primim copii de la 3 ani în sus, cu multă răbdare.' },
+    { q: 'Mă doare o măsea, pot veni azi?', a: 'Păstrăm locuri pentru urgențe în fiecare zi. Lasă-mi datele tale și te sunăm imediat să te programăm cât mai repede.' },
   ],
   agency: 'WebStudio',
   contact: 'webstudio.outreach@gmail.com',
@@ -387,38 +377,167 @@ function decodeCfg() {
 }
 const cfg = decodeCfg();
 
-/* ---------------- apply branding ---------------- */
+/* ---------------- localization ---------------- */
+const L = {
+  en: {
+    docTitle: b => `Live Demo — AI Receptionist for ${b}`,
+    live: 'LIVE DEMO',
+    tbTitle: (b, a) => `AI receptionist built for <b>${b}</b> · prepared by <b>${a}</b>`,
+    tryNight: '🌙 Try after-hours mode',
+    backDay: '☀️ Back to business hours',
+    statusOn: 'Online — replies instantly',
+    statusNight: 'After hours — still here 24/7',
+    services: 'Services',
+    visitUs: 'Visit us',
+    inputPh: 'Type a message…',
+    lookTitle: '👀 What you\'re looking at',
+    lookIntro: b => `This is a working preview of an <b>AI receptionist</b> on the <b>${b}</b> website. Try it like a customer would: ask about prices, hours, anything — or book an appointment. <b>Try to break it.</b>`,
+    stMsgs: 'Questions answered',
+    stLeads: 'Leads captured',
+    stResp: 'Response time',
+    phoneTitle: '📲 Your phone — leads land here',
+    leadEmpty: 'Book an appointment in the chat ← and watch the lead arrive here in real time, exactly like the text message you\'d receive.',
+    whyTitle: '📉 Why this matters',
+    facts: closed => `· Studies put the cost of missed calls & slow replies for a small business at <b>tens of thousands of € a year</b><br>· <b>62%</b> of callers won't leave a voicemail — they just call your competitor<br>· <b>78%</b> of customers buy from whoever responds first<br>· This assistant answers in under a second, <b>24/7</b>, including <span id="factClosed">${closed}</span>`,
+    factDay: 'nights & weekends',
+    factNight: 'RIGHT NOW, while you sleep',
+    nextTitle: '🚀 Next step',
+    ctaText: a => `<b>${a}</b> installs this on your real website — trained on your services, your prices, your FAQs — typically <b>live within a week</b>. No changes to your site needed beyond one line of code.`,
+    ctaBtn: 'Get this for my business →',
+    greetDay: b => `Hi! 👋 Welcome to ${b}. I'm the virtual receptionist — I can book you in, answer questions, or get you prices. How can I help?`,
+    greetNight: b => `Hi! 👋 You've reached ${b}. We're closed right now — but I'm not! I can book you in, answer questions or get a message to the team. What can I do for you?`,
+    qBook: '📅 Book an appointment', qPrice: '💲 Services & pricing', qHours: '🕐 Hours & location', qOther: '❓ Ask something else',
+    qYesBook: '📅 Yes, book me in', qNotNow: 'Not right now', qAnother: '❓ Another question',
+    somethingElse: 'Something else',
+    bookAsk: 'Of course! What would you like to come in for?',
+    slotsDay: 'Great choice. Here\'s the next availability:',
+    slotsNight: 'No problem — even though we\'re closed, I can lock that in right now. Here\'s what\'s open:',
+    bookName: 'Perfect. What name should I put the appointment under?',
+    bookPhone: n => `Thanks, ${n}! And the best phone number to confirm with?`,
+    bookDone: d => `You're all set! ✅\n\n📅 ${d.service}\n🗓 ${d.slot}\n👤 ${d.name} · ${d.phone}\n\nYou'll get a text confirmation in a minute. Anything else I can help with?`,
+    priceList: list => `Here's our most popular services:\n\n${list}\n\nWant me to book you in for one of these?`,
+    hoursDay: 'Walk-ins welcome, but booking ahead guarantees your spot.',
+    hoursNight: 'We\'re closed at the moment — but I can book your spot right now so you skip the morning phone rush.',
+    humanAsk: b => `Absolutely — I'll have a real human from ${b} call you. What's your name?`,
+    thanks: 'Anytime! 😊 Anything else I can help with?',
+    hi: 'Hi there! How can I help today?',
+    other: 'Sure — ask me anything! Prices, what to expect, anything at all.',
+    fallback: o => `Good question — that one's best answered by ${o} directly. Tell me exactly what you'd like to know and I'll have them text you the answer personally. 👇`,
+    msgGot: o => `Got it — I'll make sure ${o} sees that. What's your name?`,
+    msgPhone: 'And the best number to text you back on?',
+    msgDone: o => `Done! ${o} will get back to you shortly — usually within the hour. Anything else?`,
+    theTeam: 'the team',
+    wantsHuman: 'Wants to speak with a person',
+    leadBooked: 'APPOINTMENT BOOKED', leadQ: 'QUESTION — CALLBACK REQUESTED', afterTag: 'AFTER HOURS',
+    tomorrow: 'Tomorrow', days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    times: ['9:30 AM', '11:00 AM', '2:15 PM', '4:45 PM'],
+    ctaFallback: 'Hook this button to your email or booking link in the Demo Factory.',
+  },
+  ro: {
+    docTitle: b => `Demo Live — Recepționer AI pentru ${b}`,
+    live: 'DEMO LIVE',
+    tbTitle: (b, a) => `Recepționer AI creat pentru <b>${b}</b> · pregătit de <b>${a}</b>`,
+    tryNight: '🌙 Încearcă modul „după program”',
+    backDay: '☀️ Înapoi la orele de program',
+    statusOn: 'Online — răspunde instant',
+    statusNight: 'În afara programului — disponibil 24/7',
+    services: 'Servicii',
+    visitUs: 'Ne găsești aici',
+    inputPh: 'Scrie un mesaj…',
+    lookTitle: '👀 Ce vezi aici',
+    lookIntro: b => `Aceasta este o demonstrație funcțională a unui <b>recepționer AI</b> pe site-ul <b>${b}</b>. Testează-l ca un client: întreabă de prețuri, program, orice — sau fă o programare. <b>Încearcă să-l păcălești.</b>`,
+    stMsgs: 'Întrebări rezolvate',
+    stLeads: 'Clienți captați',
+    stResp: 'Timp de răspuns',
+    phoneTitle: '📲 Telefonul tău — aici ajung clienții',
+    leadEmpty: 'Fă o programare în chat ← și vezi cum cererea apare aici în timp real, exact ca SMS-ul pe care l-ai primi.',
+    whyTitle: '📉 De ce contează',
+    facts: closed => `· Studiile arată că apelurile ratate și răspunsurile târzii costă o afacere mică <b>zeci de mii de € pe an</b><br>· <b>62%</b> dintre clienți nu lasă mesaj vocal — sună direct la concurență<br>· <b>78%</b> dintre clienți aleg afacerea care răspunde prima<br>· Acest asistent răspunde în mai puțin de o secundă, <b>24/7</b>, inclusiv <span id="factClosed">${closed}</span>`,
+    factDay: 'noaptea și în weekend',
+    factNight: 'CHIAR ACUM, în timp ce tu dormi',
+    nextTitle: '🚀 Pasul următor',
+    ctaText: a => `<b>${a}</b> instalează acest asistent pe site-ul tău real — instruit pe serviciile tale, prețurile tale, întrebările clienților tăi — de regulă <b>funcțional într-o săptămână</b>. Nu e nevoie de nicio modificare la site în afară de un singur rând de cod.`,
+    ctaBtn: 'Vreau asta pentru afacerea mea →',
+    greetDay: b => `Bună! 👋 Bine ai venit la ${b}. Sunt recepționerul virtual — te pot programa, îți răspund la întrebări sau îți spun prețurile. Cu ce te pot ajuta?`,
+    greetNight: b => `Bună! 👋 Ai ajuns la ${b}. Acum suntem închiși — dar eu nu! Te pot programa, îți răspund la întrebări sau transmit un mesaj echipei. Cu ce te ajut?`,
+    qBook: '📅 Fă o programare', qPrice: '💲 Servicii și prețuri', qHours: '🕐 Program și locație', qOther: '❓ Altă întrebare',
+    qYesBook: '📅 Da, programează-mă', qNotNow: 'Nu acum', qAnother: '❓ Altă întrebare',
+    somethingElse: 'Altceva',
+    bookAsk: 'Sigur! Pentru ce serviciu dorești să vii?',
+    slotsDay: 'Alegere excelentă. Iată următoarele locuri libere:',
+    slotsNight: 'Nicio problemă — chiar dacă suntem închiși, pot rezerva chiar acum. Iată ce e liber:',
+    bookName: 'Perfect. Pe ce nume fac programarea?',
+    bookPhone: n => `Mulțumesc, ${n}! Și cel mai bun număr de telefon pentru confirmare?`,
+    bookDone: d => `Gata, ești programat(ă)! ✅\n\n📅 ${d.service}\n🗓 ${d.slot}\n👤 ${d.name} · ${d.phone}\n\nPrimești un SMS de confirmare în câteva minute. Te mai pot ajuta cu ceva?`,
+    priceList: list => `Iată cele mai căutate servicii ale noastre:\n\n${list}\n\nVrei să te programez pentru unul dintre ele?`,
+    hoursDay: 'Poți veni și fără programare, dar cu programare ai locul garantat.',
+    hoursNight: 'Momentan suntem închiși — dar îți pot rezerva locul chiar acum, ca să nu mai aștepți la telefon dimineața.',
+    humanAsk: b => `Desigur — voi ruga pe cineva de la ${b} să te sune. Cum te numești?`,
+    thanks: 'Cu drag! 😊 Te mai pot ajuta cu ceva?',
+    hi: 'Bună! Cu ce te pot ajuta azi?',
+    other: 'Sigur — întreabă-mă orice! Prețuri, cum decurge o vizită, orice dorești.',
+    fallback: o => `Bună întrebare — la asta îți poate răspunde cel mai bine ${o} direct. Scrie-mi exact ce vrei să afli și mă asigur că primești răspunsul personal, prin SMS. 👇`,
+    msgGot: o => `Am notat — mă asigur că ${o} vede mesajul. Cum te numești?`,
+    msgPhone: 'Și numărul de telefon la care te putem contacta?',
+    msgDone: o => `Gata! ${o} îți va răspunde în scurt timp — de obicei în maximum o oră. Altceva?`,
+    theTeam: 'echipa',
+    wantsHuman: 'Dorește să vorbească cu o persoană',
+    leadBooked: 'PROGRAMARE NOUĂ', leadQ: 'ÎNTREBARE — DE SUNAT ÎNAPOI', afterTag: 'DUPĂ PROGRAM',
+    tomorrow: 'Mâine', days: ['Dum', 'Lun', 'Mar', 'Mie', 'Joi', 'Vin', 'Sâm'],
+    times: ['9:30', '11:00', '14:15', '16:45'],
+    ctaFallback: 'Leagă acest buton de emailul sau linkul tău de programări din Demo Factory.',
+  },
+};
+const T = L[cfg.lang] || L.en;
+
+/* ---------------- apply branding + static texts ---------------- */
+document.documentElement.lang = cfg.lang;
 document.documentElement.style.setProperty('--brand', cfg.color);
-document.title = 'Live Demo — AI Receptionist for ' + cfg.biz;
+document.title = T.docTitle(cfg.biz);
 const $ = id => document.getElementById(id);
-$('tbBiz').textContent = cfg.biz;
-$('tbAgency').textContent = cfg.agency;
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+$('tbLive').textContent = T.live;
+$('tbTitle').innerHTML = T.tbTitle(esc(cfg.biz), esc(cfg.agency));
 $('siteLogo').textContent = cfg.biz.trim()[0].toUpperCase();
 $('siteName').textContent = cfg.biz;
 $('siteTag').textContent = cfg.tag;
+$('siteSvcTitle').textContent = T.services;
+$('siteVisitTitle').textContent = T.visitUs;
 $('chatBizName').textContent = cfg.biz;
-$('oiBiz').textContent = cfg.biz;
-$('ctaAgency').textContent = cfg.agency;
+$('chatStatus').textContent = T.statusOn;
+$('chatInput').placeholder = T.inputPh;
+$('opLookTitle').textContent = T.lookTitle;
+$('ownerIntro').innerHTML = T.lookIntro(esc(cfg.biz));
+$('stMsgsL').textContent = T.stMsgs;
+$('stLeadsL').textContent = T.stLeads;
+$('stRespL').textContent = T.stResp;
+$('opPhoneTitle').textContent = T.phoneTitle;
+$('leadEmpty').textContent = T.leadEmpty;
+$('opWhyTitle').textContent = T.whyTitle;
+$('opFacts').innerHTML = T.facts(T.factDay);
+$('opNextTitle').textContent = T.nextTitle;
+$('ctaText').innerHTML = T.ctaText(esc(cfg.agency));
+$('ctaLink').textContent = T.ctaBtn;
+$('hoursToggle').textContent = T.tryNight;
 $('siteSvcs').innerHTML = cfg.services.map(s =>
   `<div class="svc"><b>${esc(s.n)}</b><span>${esc(s.p)}</span></div>`).join('');
 $('siteMeta').innerHTML = `🕐 ${esc(cfg.hours)}<br>📍 ${esc(cfg.addr)}<br>📞 ${esc(cfg.phone)}`;
 if (cfg.contact) {
   $('ctaLink').href = cfg.contact.includes('@') ? 'mailto:' + cfg.contact : cfg.contact;
 } else {
-  $('ctaLink').addEventListener('click', e => { e.preventDefault(); alert('Hook this button to your email or booking link in the Demo Factory.'); });
-}
-function esc(s) {
-  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  $('ctaLink').addEventListener('click', e => { e.preventDefault(); alert(T.ctaFallback); });
 }
 
 /* ---------------- after-hours mode ---------------- */
 let afterHours = false;
 $('hoursToggle').addEventListener('click', () => {
   afterHours = !afterHours;
-  $('hoursToggle').textContent = afterHours ? '☀️ Back to business hours' : '🌙 Try after-hours mode';
+  $('hoursToggle').textContent = afterHours ? T.backDay : T.tryNight;
   $('hoursToggle').classList.toggle('night', afterHours);
-  $('chatStatus').textContent = afterHours ? 'After hours — still here 24/7' : 'Online — replies instantly';
-  $('factClosed').textContent = afterHours ? 'RIGHT NOW, while you sleep' : 'nights & weekends';
+  $('chatStatus').textContent = afterHours ? T.statusNight : T.statusOn;
+  $('factClosed').textContent = afterHours ? T.factNight : T.factDay;
   resetChat();
 });
 
@@ -465,18 +584,14 @@ function setQuick(opts) {
   }
 }
 const MAIN_QUICK = [
-  { label: '📅 Book an appointment', action: 'book' },
-  { label: '💲 Services & pricing', action: 'pricing' },
-  { label: '🕐 Hours & location', action: 'hours' },
-  { label: '❓ Ask something else', action: 'other' },
+  { label: T.qBook, action: 'book' },
+  { label: T.qPrice, action: 'pricing' },
+  { label: T.qHours, action: 'hours' },
+  { label: T.qOther, action: 'other' },
 ];
 
 async function greet() {
-  if (afterHours) {
-    await botSay(`Hi! 👋 You've reached ${cfg.biz}. We're closed right now — but I'm not! I can book you in, answer questions or get a message to the team. What can I do for you?`);
-  } else {
-    await botSay(`Hi! 👋 Welcome to ${cfg.biz}. I'm the virtual receptionist — I can book you in, answer questions, or get you prices. How can I help?`);
-  }
+  await botSay(afterHours ? T.greetNight(cfg.biz) : T.greetDay(cfg.biz));
   setQuick(MAIN_QUICK);
 }
 function resetChat() {
@@ -486,39 +601,57 @@ function resetChat() {
   greet();
 }
 
-/* ---- intent detection for free text ---- */
-function detectIntent(t) {
-  t = t.toLowerCase();
+/* ---- intent detection for free text (en + ro keywords) ---- */
+function norm(s) {
+  return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+const KW = {
+  book: ['book', 'appointment', 'schedule', 'reserve', 'slot', 'come in', 'availab',
+         'programare', 'programez', 'programati', 'rezerv', 'rezervare', 'loc liber', 'disponibil', 'cand pot veni'],
+  pricing: ['price', 'pricing', 'cost', 'how much', 'charge', 'fee', 'service', 'rate', 'menu',
+            'pret', 'preturi', 'cat costa', 'cat e', 'cat este', 'tarif', 'servicii', 'oferta'],
+  hours: ['hour', 'open', 'close', 'closing', 'when are you', 'address', 'where', 'location', 'parking', 'direction',
+          'program', 'deschis', 'inchis', 'inchideti', 'deschideti', 'adresa', 'unde', 'locatie', 'parcare', 'orar'],
+  human: ['human', 'real person', 'speak to', 'talk to', 'call me', 'someone call', 'a person',
+          'om adevarat', 'persoana reala', 'vorbesc cu cineva', 'sa ma sune', 'suna-ma', 'sunati-ma', 'cu un om'],
+  thanks: ['thank', 'thanks', 'awesome', 'perfect', 'cool', 'okay', 'ok',
+           'multumesc', 'mersi', 'super', 'bine', 'am inteles'],
+};
+const GREET_RE = /^(hi|hello|hey|yo|sup|good (morning|afternoon|evening)|buna( ziua| seara| dimineata)?|salut|servus|hei|neata)\b/;
+
+function detectIntent(raw) {
+  const t = norm(raw);
   const has = (...ws) => ws.some(w =>
     new RegExp('\\b' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ +/g, '\\s+')).test(t));
-  if (has('book', 'appointment', 'schedule', 'reserve', 'slot', 'come in', 'availab')) return 'book';
-  if (has('price', 'pricing', 'cost', 'how much', 'charge', 'fee', 'service', 'rate', 'menu')) return 'pricing';
-  if (has('hour', 'open', 'close', 'closing', 'when are you', 'address', 'where', 'location', 'parking', 'direction')) return 'hours';
-  if (has('human', 'real person', 'speak to', 'talk to', 'call me', 'someone call', 'a person')) return 'human';
-  // FAQ match before small talk: score by word overlap
+  // FAQ scoring first (diacritics-insensitive word overlap)
   let best = null, bestScore = 0;
   for (const f of cfg.faqs) {
-    const words = [...new Set(f.q.toLowerCase().split(/\W+/).filter(w => w.length > 3))];
+    const words = [...new Set(norm(f.q).split(/\W+/).filter(w => w.length > 3))];
     const score = words.filter(w => has(w)).length / Math.max(words.length, 1);
     if (score > bestScore) { bestScore = score; best = f; }
   }
+  // a strong FAQ match beats generic intents — the prospect's own questions
+  // are more specific than keywords like "programare"/"book"
+  if (best && bestScore >= 0.6) return { faq: best };
+  if (has(...KW.book)) return 'book';
+  if (has(...KW.pricing)) return 'pricing';
+  if (has(...KW.hours)) return 'hours';
+  if (has(...KW.human)) return 'human';
   if (best && bestScore >= 0.34) return { faq: best };
-  if (t.length < 30 && has('thank', 'thanks', 'awesome', 'perfect', 'cool', 'okay', 'ok')) return 'thanks';
-  if (t.length < 20 && /^(hi|hello|hey|yo|sup|good (morning|afternoon|evening))\b/.test(t.trim())) return 'greet';
+  if (t.length < 30 && has(...KW.thanks)) return 'thanks';
+  if (t.length < 25 && GREET_RE.test(t.trim())) return 'greet';
   return 'fallback';
 }
 
 /* ---- booking slots ---- */
 function genSlots() {
   const out = [];
-  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const times = ['9:30 AM', '11:00 AM', '2:15 PM', '4:45 PM'];
   const d = new Date();
   for (let i = 1; out.length < 3; i++) {
     const dd = new Date(d.getTime() + i * 86400000);
     if (dd.getDay() === 0) continue; // skip Sundays
-    const label = (i === 1 ? 'Tomorrow' : days[dd.getDay()] + ' ' + (dd.getMonth() + 1) + '/' + dd.getDate());
-    out.push(label + ', ' + times[out.length]);
+    const label = (i === 1 ? T.tomorrow : T.days[dd.getDay()] + ' ' + dd.getDate() + '.' + (dd.getMonth() + 1));
+    out.push(label + ', ' + T.times[out.length]);
   }
   return out;
 }
@@ -526,8 +659,8 @@ function genSlots() {
 /* ---- flows ---- */
 async function startBooking() {
   flow = { type: 'book', step: 'service', data: {} };
-  await botSay('Of course! What would you like to come in for?');
-  setQuick(cfg.services.map(s => ({ label: s.n, action: 'pick_service' })).concat([{ label: 'Something else', action: 'pick_service' }]));
+  await botSay(T.bookAsk);
+  setQuick(cfg.services.map(s => ({ label: s.n, action: 'pick_service' })).concat([{ label: T.somethingElse, action: 'pick_service' }]));
 }
 async function flowStep(text) {
   const f = flow;
@@ -536,42 +669,39 @@ async function flowStep(text) {
       f.data.service = text;
       f.step = 'slot';
       const slots = genSlots();
-      f.data.slots = slots;
-      await botSay(afterHours
-        ? `No problem — even though we're closed, I can lock that in right now. Here's what's open:`
-        : `Great choice. Here's the next availability:`);
+      await botSay(afterHours ? T.slotsNight : T.slotsDay);
       setQuick(slots.map(s => ({ label: '🗓 ' + s, action: 'pick_slot' })));
     } else if (f.step === 'slot') {
       f.data.slot = text.replace('🗓 ', '');
       f.step = 'name';
-      await botSay('Perfect. What name should I put the appointment under?');
+      await botSay(T.bookName);
       setQuick([]);
     } else if (f.step === 'name') {
       f.data.name = text;
       f.step = 'phone';
-      await botSay(`Thanks, ${text.split(' ')[0]}! And the best phone number to confirm with?`);
+      await botSay(T.bookPhone(text.split(' ')[0]));
     } else if (f.step === 'phone') {
       f.data.phone = text;
       flow = null;
-      await botSay(`You're all set! ✅\n\n📅 ${f.data.service}\n🗓 ${f.data.slot}\n👤 ${f.data.name} · ${f.data.phone}\n\nYou'll get a text confirmation in a minute. Anything else I can help with?`);
-      captureLead('APPOINTMENT BOOKED', `<b>${esc(f.data.name)}</b> · ${esc(f.data.phone)}<br>${esc(f.data.service)} — ${esc(f.data.slot)}`);
+      await botSay(T.bookDone(f.data));
+      captureLead(T.leadBooked, `<b>${esc(f.data.name)}</b> · ${esc(f.data.phone)}<br>${esc(f.data.service)} — ${esc(f.data.slot)}`);
       setQuick(MAIN_QUICK);
     }
   } else if (f.type === 'msg') {
     if (f.step === 'question') {
       f.data.q = text;
       f.step = 'name';
-      await botSay(`Got it — I'll make sure ${cfg.owner || 'the team'} sees that. What's your name?`);
+      await botSay(T.msgGot(cfg.owner || T.theTeam));
       setQuick([]);
     } else if (f.step === 'name') {
       f.data.name = text;
       f.step = 'phone';
-      await botSay('And the best number to text you back on?');
+      await botSay(T.msgPhone);
     } else if (f.step === 'phone') {
       f.data.phone = text;
       flow = null;
-      await botSay(`Done! ${cfg.owner || 'The team'} will get back to you shortly — usually within the hour. Anything else?`);
-      captureLead('QUESTION — CALLBACK REQUESTED', `<b>${esc(f.data.name)}</b> · ${esc(f.data.phone)}<br>"${esc(f.data.q)}"`);
+      await botSay(T.msgDone(cfg.owner || T.theTeam));
+      captureLead(T.leadQ, `<b>${esc(f.data.name)}</b> · ${esc(f.data.phone)}<br>"${esc(f.data.q)}"`);
       setQuick(MAIN_QUICK);
     }
   }
@@ -592,29 +722,29 @@ async function handleUser(text, forcedAction) {
       await startBooking();
     } else if (intent === 'pricing') {
       const list = cfg.services.map(s => `· ${s.n} — ${s.p}`).join('\n');
-      await botSay(`Here's our most popular services:\n\n${list}\n\nWant me to book you in for one of these?`);
-      setQuick([{ label: '📅 Yes, book me in', action: 'book' }, { label: 'Not right now', action: 'other' }]);
+      await botSay(T.priceList(list));
+      setQuick([{ label: T.qYesBook, action: 'book' }, { label: T.qNotNow, action: 'other' }]);
     } else if (intent === 'hours') {
-      await botSay(`🕐 ${cfg.hours}\n📍 ${cfg.addr}\n\n${afterHours ? "We're closed at the moment — but I can book your spot right now so you skip the morning phone rush." : 'Walk-ins welcome, but booking ahead guarantees your spot.'}`);
-      setQuick([{ label: '📅 Book a time', action: 'book' }, { label: '❓ Another question', action: 'other' }]);
+      await botSay(`🕐 ${cfg.hours}\n📍 ${cfg.addr}\n\n${afterHours ? T.hoursNight : T.hoursDay}`);
+      setQuick([{ label: T.qBook, action: 'book' }, { label: T.qAnother, action: 'other' }]);
     } else if (intent === 'human') {
-      flow = { type: 'msg', step: 'name', data: { q: 'Wants to speak with a person' } };
-      await botSay(`Absolutely — I'll have a real human from ${cfg.biz} call you. What's your name?`);
+      flow = { type: 'msg', step: 'name', data: { q: T.wantsHuman } };
+      await botSay(T.humanAsk(cfg.biz));
     } else if (intent === 'thanks') {
-      await botSay('Anytime! 😊 Anything else I can help with?');
+      await botSay(T.thanks);
       setQuick(MAIN_QUICK);
     } else if (intent === 'greet') {
-      await botSay('Hi there! How can I help today?');
+      await botSay(T.hi);
       setQuick(MAIN_QUICK);
     } else if (intent === 'other') {
-      await botSay('Sure — ask me anything! Prices, what to expect, insurance, anything at all.');
+      await botSay(T.other);
     } else if (intent && intent.faq) {
       await botSay(intent.faq.a);
-      setQuick([{ label: '📅 Book an appointment', action: 'book' }, { label: '❓ Another question', action: 'other' }]);
+      setQuick([{ label: T.qBook, action: 'book' }, { label: T.qAnother, action: 'other' }]);
     } else {
       // fallback — never lose the lead
       flow = { type: 'msg', step: 'question', data: {} };
-      await botSay(`Good question — that one's best answered by ${cfg.owner || 'the team'} directly. Tell me exactly what you'd like to know and I'll have them text you the answer personally. 👇`);
+      await botSay(T.fallback(cfg.owner || T.theTeam));
     }
   } finally {
     busy = false;
@@ -630,8 +760,8 @@ function captureLead(tag, html) {
   if (empty) empty.remove();
   const d = document.createElement('div');
   d.className = 'lead';
-  const time = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
-  d.innerHTML = `<span class="tag">🔔 ${tag} · ${time}${afterHours ? ' · AFTER HOURS' : ''}</span>${html}`;
+  const time = new Date().toLocaleTimeString(cfg.lang === 'ro' ? 'ro-RO' : 'en-US', { hour: 'numeric', minute: '2-digit' });
+  d.innerHTML = `<span class="tag">🔔 ${tag} · ${time}${afterHours ? ' · ' + T.afterTag : ''}</span>${html}`;
   feed.prepend(d);
 }
 

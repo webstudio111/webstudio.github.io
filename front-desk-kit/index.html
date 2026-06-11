@@ -106,31 +106,42 @@
   <div class="card">
     <h2>1 · Prospect details</h2>
 
-    <label>Industry preset <small>— prefills services & FAQs, edit anything after</small></label>
-    <select id="f_ind"></select>
+    <div class="row2">
+      <div>
+        <label>Demo language <small>— what the prospect's customers speak</small></label>
+        <select id="f_lang">
+          <option value="ro" selected>🇷🇴 Română</option>
+          <option value="en">🇬🇧 English</option>
+        </select>
+      </div>
+      <div>
+        <label>Industry preset <small>— prefills services & FAQs</small></label>
+        <select id="f_ind"></select>
+      </div>
+    </div>
 
     <label>Business name</label>
-    <input type="text" id="f_biz" placeholder="Sunrise Dental">
+    <input type="text" id="f_biz" placeholder="Clinica Dentară Zâmbet">
 
     <label>Tagline <small>— copy from their website or Google listing</small></label>
-    <input type="text" id="f_tag" placeholder="Family & cosmetic dentistry in Austin, TX">
+    <input type="text" id="f_tag">
 
     <div class="row2">
       <div>
         <label>Owner / contact name <small>(optional)</small></label>
-        <input type="text" id="f_owner" placeholder="Dr. Patel">
+        <input type="text" id="f_owner" placeholder="Dr. Ionescu">
       </div>
       <div>
         <label>Their phone</label>
-        <input type="text" id="f_phone" placeholder="(512) 555-0188">
+        <input type="text" id="f_phone" placeholder="0722 123 456">
       </div>
     </div>
 
     <label>Address</label>
-    <input type="text" id="f_addr" placeholder="1200 S Lamar Blvd, Austin, TX">
+    <input type="text" id="f_addr" placeholder="Str. Mihai Eminescu 24, București">
 
     <label>Opening hours</label>
-    <input type="text" id="f_hours" placeholder="Mon–Fri 8am–5pm · Sat 9am–1pm">
+    <input type="text" id="f_hours" placeholder="Lun–Vin 9:00–19:00 · Sâm 9:00–13:00">
 
     <div class="row2">
       <div>
@@ -169,7 +180,6 @@
         <button class="ghost" id="copyLinkBtn">📋 Copy link</button>
       </div>
       <p class="hint">The whole demo is encoded inside the link itself — no server, no account, nothing to expire.
-      Host this kit on GitHub Pages (free) and the link works for anyone, on any device.
       <b>Tip:</b> shorten it with a free link shortener before sending so it looks clean.</p>
     </div>
 
@@ -189,7 +199,7 @@
     <div class="card" style="margin-top:22px">
       <h2>The 2-minute recipe</h2>
       <div class="steps">
-        <b>1.</b> Google Maps → search the niche in your city (e.g. "dentist") <br>
+        <b>1.</b> Google Maps → search the niche in your city (e.g. "stomatolog") <br>
         <b>2.</b> Open their listing: copy name, hours, address, phone <br>
         <b>3.</b> Open their website: grab 3–4 services + prices, tagline, brand color <br>
         <b>4.</b> Read their 1–3 star reviews: complaints = the FAQs the bot should nail <br>
@@ -203,80 +213,136 @@
 <script>
 'use strict';
 
-/* ---------------- industry presets ---------------- */
+/* ---------------- industry presets (en + ro) ---------------- */
 const PRESETS = {
-  dentist: {
-    label: '🦷 Dentist',
-    tag: 'Family & cosmetic dentistry — gentle care, modern tech',
-    svcs: 'New patient exam + X-rays | $89\nTeeth cleaning | $120\nWhitening (in-office) | $349\nEmergency visit | from $150',
-    faqs: 'Do you take insurance? | Yes! We accept most major PPO plans including Delta Dental, Cigna and MetLife. Bring your card to your first visit and we\'ll verify everything for you.\nDo you see kids? | Absolutely — we love seeing the whole family. We treat children from age 3 and up.\nI have tooth pain, can I come in today? | We keep same-day slots for emergencies. Let me grab your details and the team will call you right back to fit you in.',
+  en: {
+    dentist: {
+      label: '🦷 Dentist',
+      tag: 'Family & cosmetic dentistry — gentle care, modern tech',
+      svcs: 'New patient exam + X-rays | $89\nTeeth cleaning | $120\nWhitening (in-office) | $349\nEmergency visit | from $150',
+      faqs: 'Do you take insurance? | Yes! We accept most major PPO plans including Delta Dental, Cigna and MetLife. Bring your card to your first visit and we\'ll verify everything for you.\nDo you see kids? | Absolutely — we love seeing the whole family. We treat children from age 3 and up.\nI have tooth pain, can I come in today? | We keep same-day slots for emergencies. Let me grab your details and the team will call you right back to fit you in.',
+    },
+    salon: {
+      label: '💇 Hair / beauty salon',
+      tag: 'Color, cuts & styling by award-winning stylists',
+      svcs: "Women's cut & style | from $65\nFull color | from $120\nBalayage | from $180\nBlowout | $45",
+      faqs: 'Do you take walk-ins? | We do when there\'s a free chair, but booking ahead guarantees your spot — I can book you right now if you like!\nHow far in advance should I book for color? | Color appointments fill up about a week out, so the sooner the better. Want me to check the next opening?\nWhich stylist is best for curly hair? | Great question — a couple of our stylists specialize in curly cuts. Leave me your number and we\'ll match you with the right one.',
+    },
+    plumber: {
+      label: '🔧 Plumber / HVAC',
+      tag: 'Fast, honest service — licensed & insured',
+      svcs: 'Service call / diagnostic | $79\nDrain cleaning | from $149\nWater heater install | from $1,100\nEmergency call-out (24/7) | from $199',
+      faqs: 'Do you offer free estimates? | Yes — free estimates on all installs and bigger jobs. For repairs, the $79 diagnostic fee is waived if you go ahead with the work.\nHow fast can someone come out? | For emergencies we can usually be there within 2 hours. Let me grab your details and dispatch will call you right back.\nAre you licensed and insured? | Fully licensed, bonded and insured. Happy to share license numbers on request.',
+    },
+    gym: {
+      label: '💪 Gym / fitness studio',
+      tag: 'Train smarter — coaching, classes & community',
+      svcs: 'Monthly membership | $49/mo\nDay pass | $15\nPersonal training (1hr) | $70\nIntro offer: 2 weeks unlimited | $29',
+      faqs: 'Is there a joining fee? | No joining fee this month — just the membership. Want me to book you a free tour?\nDo you have showers and lockers? | Yes, full locker rooms with showers, towels included on premium plans.\nCan I freeze my membership? | Yes, you can freeze up to 2 months per year at no charge. I can have the front desk set that up for you.',
+    },
+    restaurant: {
+      label: '🍝 Restaurant',
+      tag: 'Fresh, local & made from scratch',
+      svcs: 'Lunch mains | $14–$19\nDinner mains | $22–$38\nGroup menu (8+) | $45/person\nPrivate room hire | from $300',
+      faqs: 'Do you take reservations? | Yes! I can book your table right now — what day and party size?\nDo you have vegan / gluten-free options? | We do — several mains and desserts are vegan and GF. The kitchen can adapt most dishes too, just mention it when booking.\nIs there parking nearby? | There\'s a public lot half a block away and free street parking after 6pm.',
+    },
+    auto: {
+      label: '🚗 Auto repair',
+      tag: 'Honest mechanics. Fair prices. Done right.',
+      svcs: 'Oil change + inspection | $59\nBrake pads (per axle) | from $189\nDiagnostics | $89\nFull service | from $249',
+      faqs: 'Do you give quotes over the phone? | For common jobs, yes — tell me your car\'s make, model and year and what\'s going on, and I\'ll have the shop text you a quote.\nDo you offer loaner cars or shuttle? | We have a free local shuttle, and loaners for jobs over a day.\nHow long does an oil change take? | About 30–40 minutes if you book ahead. Want me to grab you a slot?',
+    },
+    lawyer: {
+      label: '⚖️ Law firm',
+      tag: 'Straight answers. Strong representation.',
+      svcs: 'Initial consultation | Free (30 min)\nFamily law | from $250/hr\nEstate planning package | from $899\nBusiness formation | from $599',
+      faqs: 'Is the first consultation really free? | Yes — 30 minutes, no obligation. I can book you in right now.\nDo you work on contingency? | For personal injury matters, yes. Other practice areas are hourly or flat-fee. The attorney can confirm what fits your case in the free consult.\nHow quickly can I speak to an attorney? | Usually within one business day. Let me take your details and the office will call you to schedule.',
+    },
+    generic: {
+      label: '🏪 Other local business',
+      tag: 'Quality service, trusted locally',
+      svcs: 'Standard service | from $99\nPremium service | from $199\nConsultation | Free',
+      faqs: 'How do I get a quote? | Tell me a bit about what you need and I\'ll have the team text you a quote, usually within the hour.\nHow soon can you fit me in? | We usually have openings within a few days — I can check right now if you like.',
+    },
   },
-  salon: {
-    label: '💇 Hair / beauty salon',
-    tag: 'Color, cuts & styling by award-winning stylists',
-    svcs: "Women's cut & style | from $65\nFull color | from $120\nBalayage | from $180\nBlowout | $45",
-    faqs: 'Do you take walk-ins? | We do when there\'s a free chair, but booking ahead guarantees your spot — I can book you right now if you like!\nHow far in advance should I book for color? | Color appointments fill up about a week out, so the sooner the better. Want me to check the next opening?\nWhich stylist is best for curly hair? | Great question — a couple of our stylists specialize in curly cuts. Leave me your number and we\'ll match you with the right one.',
-  },
-  plumber: {
-    label: '🔧 Plumber / HVAC',
-    tag: 'Fast, honest service — licensed & insured',
-    svcs: 'Service call / diagnostic | $79\nDrain cleaning | from $149\nWater heater install | from $1,100\nEmergency call-out (24/7) | from $199',
-    faqs: 'Do you offer free estimates? | Yes — free estimates on all installs and bigger jobs. For repairs, the $79 diagnostic fee is waived if you go ahead with the work.\nHow fast can someone come out? | For emergencies we can usually be there within 2 hours. Let me grab your details and dispatch will call you right back.\nAre you licensed and insured? | Fully licensed, bonded and insured. Happy to share license numbers on request.',
-  },
-  gym: {
-    label: '💪 Gym / fitness studio',
-    tag: 'Train smarter — coaching, classes & community',
-    svcs: 'Monthly membership | $49/mo\nDay pass | $15\nPersonal training (1hr) | $70\nIntro offer: 2 weeks unlimited | $29',
-    faqs: 'Is there a joining fee? | No joining fee this month — just the membership. Want me to book you a free tour?\nDo you have showers and lockers? | Yes, full locker rooms with showers, towels included on premium plans.\nCan I freeze my membership? | Yes, you can freeze up to 2 months per year at no charge. I can have the front desk set that up for you.',
-  },
-  restaurant: {
-    label: '🍝 Restaurant',
-    tag: 'Fresh, local & made from scratch',
-    svcs: 'Lunch mains | $14–$19\nDinner mains | $22–$38\nGroup menu (8+) | $45/person\nPrivate room hire | from $300',
-    faqs: 'Do you take reservations? | Yes! I can book your table right now — what day and party size?\nDo you have vegan / gluten-free options? | We do — several mains and desserts are vegan and GF. The kitchen can adapt most dishes too, just mention it when booking.\nIs there parking nearby? | There\'s a public lot half a block away and free street parking after 6pm.',
-  },
-  auto: {
-    label: '🚗 Auto repair',
-    tag: 'Honest mechanics. Fair prices. Done right.',
-    svcs: 'Oil change + inspection | $59\nBrake pads (per axle) | from $189\nDiagnostics | $89\nFull service | from $249',
-    faqs: 'Do you give quotes over the phone? | For common jobs, yes — tell me your car\'s make, model and year and what\'s going on, and I\'ll have the shop text you a quote.\nDo you offer loaner cars or shuttle? | We have a free local shuttle, and loaners for jobs over a day. \nHow long does an oil change take? | About 30–40 minutes if you book ahead. Want me to grab you a slot?',
-  },
-  lawyer: {
-    label: '⚖️ Law firm',
-    tag: 'Straight answers. Strong representation.',
-    svcs: 'Initial consultation | Free (30 min)\nFamily law | from $250/hr\nEstate planning package | from $899\nBusiness formation | from $599',
-    faqs: 'Is the first consultation really free? | Yes — 30 minutes, no obligation. I can book you in right now.\nDo you work on contingency? | For personal injury matters, yes. Other practice areas are hourly or flat-fee. The attorney can confirm what fits your case in the free consult.\nHow quickly can I speak to an attorney? | Usually within one business day. Let me take your details and the office will call you to schedule.',
-  },
-  generic: {
-    label: '🏪 Other local business',
-    tag: 'Quality service, trusted locally',
-    svcs: 'Standard service | from $99\nPremium service | from $199\nConsultation | Free',
-    faqs: 'How do I get a quote? | Tell me a bit about what you need and I\'ll have the team text you a quote, usually within the hour.\nHow soon can you fit me in? | We usually have openings within a few days — I can check right now if you like.',
+  ro: {
+    dentist: {
+      label: '🦷 Cabinet stomatologic',
+      tag: 'Stomatologie pentru toată familia — îngrijire blândă, tehnologie modernă',
+      svcs: 'Consult + plan de tratament | 150 RON\nDetartraj + periaj profesional | 250 RON\nAlbire profesională | 900 RON\nUrgență stomatologică | de la 200 RON',
+      faqs: 'Lucrați cu casa de asigurări? | Da, avem contract cu CAS pentru anumite servicii, iar pentru rest emitem toate documentele necesare. Adu cardul de sănătate la prima vizită și verificăm totul pentru tine.\nTratați și copii? | Sigur că da — ne ocupăm de toată familia. Primim copii de la 3 ani în sus, cu multă răbdare.\nMă doare o măsea, pot veni azi? | Păstrăm locuri pentru urgențe în fiecare zi. Lasă-mi datele tale și te sunăm imediat să te programăm cât mai repede.',
+    },
+    salon: {
+      label: '💇 Salon de înfrumusețare',
+      tag: 'Tuns, vopsit & styling — stiliști cu experiență',
+      svcs: 'Tuns damă + coafat | de la 80 RON\nVopsit complet | de la 200 RON\nBalayage | de la 350 RON\nCoafat ocazie | de la 100 RON',
+      faqs: 'Pot veni fără programare? | Se poate când avem un scaun liber, dar cu programare ai locul garantat — te pot programa chiar acum dacă vrei!\nCu cât timp înainte trebuie să mă programez pentru vopsit? | Programările pentru vopsit se ocupă cam cu o săptămână înainte, deci cu cât mai repede, cu atât mai bine. Vrei să verific primul loc liber?\nCare stilist e cel mai bun pentru păr creț? | Bună întrebare — avem stiliști specializați în păr creț. Lasă-mi numărul tău și te punem în legătură cu persoana potrivită.',
+    },
+    plumber: {
+      label: '🔧 Instalator / termice',
+      tag: 'Instalator autorizat — rapid, corect, cu garanție',
+      svcs: 'Deplasare + constatare | 100 RON\nDesfundare scurgere | de la 200 RON\nMontaj centrală termică | de la 1.500 RON\nUrgențe (24/7) | de la 250 RON',
+      faqs: 'Constatarea e gratuită? | Pentru lucrări mari și montaje, da. Pentru reparații, taxa de deplasare de 100 RON se scade din preț dacă mergem mai departe cu lucrarea.\nCât de repede poate ajunge cineva? | La urgențe ajungem de obicei în maximum 2 ore. Lasă-mi datele tale și te sunăm imediat.\nSunteți autorizați? | Da, suntem autorizați ANRE/ISCIR și oferim garanție pentru toate lucrările. Putem prezenta autorizațiile la cerere.',
+    },
+    gym: {
+      label: '💪 Sală de fitness',
+      tag: 'Antrenează-te inteligent — antrenori, clase, comunitate',
+      svcs: 'Abonament lunar | 150 RON\nȘedință unică | 35 RON\nAntrenor personal (1h) | 120 RON\nOfertă: 2 săptămâni nelimitat | 99 RON',
+      faqs: 'Există taxă de înscriere? | Luna aceasta nu — plătești doar abonamentul. Vrei să te programez pentru un tur gratuit?\nAveți dușuri și vestiare? | Da, vestiare complete cu dușuri; la abonamentele premium primești și prosop.\nPot îngheța abonamentul? | Da, îl poți îngheța până la 2 luni pe an, gratuit. Pot ruga recepția să-ți activeze opțiunea.',
+    },
+    restaurant: {
+      label: '🍝 Restaurant',
+      tag: 'Proaspăt, local & gătit cu suflet',
+      svcs: 'Meniul zilei | 35 RON\nFeluri principale | 45–90 RON\nMeniu grup (8+ pers) | 120 RON/pers\nSalon privat evenimente | de la 800 RON',
+      faqs: 'Pot face o rezervare? | Da! Îți pot rezerva masa chiar acum — pentru ce zi și câte persoane?\nAveți opțiuni vegane / fără gluten? | Avem — mai multe feluri principale și deserturi sunt vegane sau fără gluten. Bucătăria poate adapta majoritatea preparatelor, doar menționează la rezervare.\nAveți parcare? | Există o parcare publică la jumătate de stradă distanță și locuri gratuite pe stradă după ora 18:00.',
+    },
+    auto: {
+      label: '🚗 Service auto',
+      tag: 'Mecanici de încredere. Prețuri corecte. Treabă bine făcută.',
+      svcs: 'Schimb ulei + filtre | de la 250 RON\nPlăcuțe frână (punte) | de la 350 RON\nDiagnoză computerizată | 150 RON\nRevizie completă | de la 500 RON',
+      faqs: 'Dați prețuri prin telefon? | Pentru lucrările uzuale, da — spune-mi marca, modelul și anul mașinii plus problema, și service-ul îți trimite o estimare prin SMS.\nOferiți mașină la schimb? | Pentru lucrările care durează mai mult de o zi, da, în limita disponibilității.\nCât durează un schimb de ulei? | Cam 30–40 de minute cu programare. Vrei să-ți rezerv un loc?',
+    },
+    lawyer: {
+      label: '⚖️ Cabinet de avocatură',
+      tag: 'Răspunsuri clare. Reprezentare serioasă.',
+      svcs: 'Primă consultație | Gratuit (30 min)\nDrept civil & familie | de la 300 RON/oră\nPachet succesiune | de la 1.200 RON\nÎnființare firmă | de la 800 RON',
+      faqs: 'Prima consultație e chiar gratuită? | Da — 30 de minute, fără nicio obligație. Te pot programa chiar acum.\nLucrați cu onorariu de succes? | Pentru anumite cauze, da. Avocatul îți poate confirma exact ce se potrivește cazului tău la consultația gratuită.\nCât de repede pot vorbi cu un avocat? | De regulă în maximum o zi lucrătoare. Lasă-mi datele tale și biroul te sună pentru programare.',
+    },
+    generic: {
+      label: '🏪 Altă afacere locală',
+      tag: 'Servicii de calitate, de încredere, aproape de tine',
+      svcs: 'Serviciu standard | de la 150 RON\nServiciu premium | de la 300 RON\nConsultație | Gratuit',
+      faqs: 'Cum primesc o ofertă de preț? | Spune-mi pe scurt ce ai nevoie și echipa îți trimite o ofertă, de obicei în maximum o oră.\nCât de repede mă puteți primi? | De obicei avem locuri libere în câteva zile — pot verifica chiar acum dacă vrei.',
+    },
   },
 };
 
 const $ = id => document.getElementById(id);
-const F = ['f_ind','f_biz','f_tag','f_owner','f_phone','f_addr','f_hours','f_color','f_svcs','f_faqs','f_agency','f_contact'];
+const F = ['f_lang','f_ind','f_biz','f_tag','f_owner','f_phone','f_addr','f_hours','f_color','f_svcs','f_faqs','f_agency','f_contact'];
 
-/* populate industry select */
-const indSel = $('f_ind');
-for (const [k, v] of Object.entries(PRESETS)) {
-  const o = document.createElement('option');
-  o.value = k; o.textContent = v.label;
-  indSel.appendChild(o);
+/* populate industry select for current language */
+const indSel = $('f_ind'), langSel = $('f_lang');
+function fillIndustries() {
+  const lang = langSel.value;
+  const current = indSel.value || 'dentist';
+  indSel.innerHTML = '';
+  for (const [k, v] of Object.entries(PRESETS[lang])) {
+    const o = document.createElement('option');
+    o.value = k; o.textContent = v.label;
+    indSel.appendChild(o);
+  }
+  indSel.value = PRESETS[lang][current] ? current : 'dentist';
 }
-indSel.addEventListener('change', () => {
-  const p = PRESETS[indSel.value];
+function applyPreset() {
+  const p = PRESETS[langSel.value][indSel.value];
   $('f_tag').value = p.tag;
   $('f_svcs').value = p.svcs;
   $('f_faqs').value = p.faqs;
-  rebuild();
-});
-
-/* defaults */
-$('f_tag').value = PRESETS.dentist.tag;
-$('f_svcs').value = PRESETS.dentist.svcs;
-$('f_faqs').value = PRESETS.dentist.faqs;
+}
+indSel.addEventListener('change', () => { applyPreset(); rebuild(); });
+langSel.addEventListener('change', () => { fillIndustries(); applyPreset(); rebuild(); });
+fillIndustries();
+applyPreset();
 
 /* ---------------- link generation ---------------- */
 function parsePairs(text, kA, kB) {
@@ -287,13 +353,15 @@ function parsePairs(text, kA, kB) {
   });
 }
 function buildCfg() {
+  const lang = langSel.value;
   return {
-    biz: $('f_biz').value.trim() || 'Sunrise Dental',
+    lang,
+    biz: $('f_biz').value.trim() || (lang === 'ro' ? 'Clinica Dentară Zâmbet' : 'Sunrise Dental'),
     tag: $('f_tag').value.trim(),
     owner: $('f_owner').value.trim(),
-    phone: $('f_phone').value.trim() || '(512) 555-0188',
-    addr: $('f_addr').value.trim() || '1200 S Lamar Blvd, Austin, TX',
-    hours: $('f_hours').value.trim() || 'Mon–Fri 8am–5pm · Sat 9am–1pm',
+    phone: $('f_phone').value.trim() || (lang === 'ro' ? '0722 123 456' : '(512) 555-0188'),
+    addr: $('f_addr').value.trim() || (lang === 'ro' ? 'Str. Mihai Eminescu 24, București' : '1200 S Lamar Blvd, Austin, TX'),
+    hours: $('f_hours').value.trim() || (lang === 'ro' ? 'Lun–Vin 9:00–19:00 · Sâm 9:00–13:00' : 'Mon–Fri 8am–5pm · Sat 9am–1pm'),
     color: $('f_color').value,
     services: parsePairs($('f_svcs').value, 'n', 'p'),
     faqs: parsePairs($('f_faqs').value, 'q', 'a'),
@@ -305,47 +373,86 @@ function encodeCfg(cfg) {
   return btoa(unescape(encodeURIComponent(JSON.stringify(cfg))))
     .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
-let demoUrl = '';
-function rebuild() {
-  const cfg = buildCfg();
-  demoUrl = new URL('demo.html', location.href).href + '#' + encodeCfg(cfg);
-  $('linkBox').textContent = demoUrl;
+
+/* ---------------- outreach templates ---------------- */
+function outreachEN(cfg) {
   const biz = cfg.biz, owner = cfg.owner ? cfg.owner.split(' ')[0] : 'there';
-  $('o_dm').textContent =
-`Hi ${owner}! I was on ${biz}'s page and noticed customers can't get instant answers or book outside opening hours — most places lose a surprising number of jobs that way (62% of callers won't leave a voicemail, they just try the next place).
+  return {
+    dm: `Hi ${owner}! I was on ${biz}'s page and noticed customers can't get instant answers or book outside opening hours — most places lose a surprising number of jobs that way (62% of callers won't leave a voicemail, they just try the next place).
 
 So I built you something — a working AI receptionist already trained on ${biz}'s services and prices. Takes 60 seconds to try, on your phone:
 
-${'{LINK}'}
+{LINK}
 
-No pitch, no obligation — it's yours to play with. If you like it, I can have it live on your real website within a week. Worth a look?`;
-  $('o_email').textContent =
-`Subject: built something for ${biz} (60-sec look)
+No pitch, no obligation — it's yours to play with. If you like it, I can have it live on your real website within a week. Worth a look?`,
+    email: `Subject: built something for ${biz} (60-sec look)
 
 Hi ${owner},
 
-Quick context: businesses like yours lose on average $126k/year to missed calls and slow replies — 62% of callers won't leave a voicemail, and 78% of customers go with whoever responds first.
+Quick context: businesses like yours lose serious money every year to missed calls and slow replies — 62% of callers won't leave a voicemail, and 78% of customers go with whoever responds first.
 
 Rather than explain, I built a working demo for ${biz} specifically — an AI receptionist already trained on your services, prices and hours. It answers customer questions instantly and books appointments 24/7, including when you're closed.
 
-Try it on your phone (60 seconds): ${'{LINK}'}
+Try it on your phone (60 seconds): {LINK}
 
 Try to break it — ask it what your customers actually ask.
 
 If you like what you see, I'll install it on your real website within a week. If not, no hard feelings — the demo was free to make and it's been a pleasure either way.
 
 Best,
-${cfg.agency}`;
-  $('o_follow').textContent =
-`Hi ${owner} — just floating this back up. The ${biz} demo I built is still live here: ${'{LINK}'}
+${cfg.agency}`,
+    follow: `Hi ${owner} — just floating this back up. The ${biz} demo I built is still live here: {LINK}
 
 One thing worth trying: tap "🌙 after-hours mode" at the top. That's the part most owners care about — it keeps booking customers while you're closed, when every missed call is a job your competitor gets.
 
-If now's not the time, no stress. Should I check back next month?`;
-  // patch the {LINK} placeholders with the short note
-  for (const id of ['o_dm', 'o_email', 'o_follow']) {
-    $(id).textContent = $(id).textContent.replace(/\{LINK\}/g, '[your shortened demo link]');
-  }
+If now's not the time, no stress. Should I check back next month?`,
+  };
+}
+function outreachRO(cfg) {
+  const biz = cfg.biz, owner = cfg.owner ? cfg.owner.split(' ')[0] : '';
+  const hi = owner ? `Bună, ${owner}!` : 'Bună ziua!';
+  return {
+    dm: `${hi} Am văzut pagina ${biz} și am observat că clienții nu pot primi răspunsuri instant și nu se pot programa în afara orelor de program — multe afaceri pierd surprinzător de mulți clienți așa (62% dintre cei care sună nu lasă mesaj vocal, încearcă direct la concurență).
+
+Așa că am construit ceva pentru voi — un recepționer AI funcțional, deja instruit pe serviciile și prețurile ${biz}. Durează 60 de secunde să-l încerci, direct de pe telefon:
+
+{LINK}
+
+Fără nicio obligație — e al tău, testează-l liniștit. Dacă îți place, îl pot pune pe site-ul vostru real într-o săptămână. Arunci o privire?`,
+    email: `Subiect: am construit ceva pentru ${biz} (60 de secunde)
+
+${hi}
+
+Pe scurt: afacerile ca a dumneavoastră pierd bani serioși în fiecare an din cauza apelurilor ratate și a răspunsurilor târzii — 62% dintre clienții care sună nu lasă mesaj vocal, iar 78% aleg afacerea care răspunde prima.
+
+În loc să explic, am construit un demo funcțional special pentru ${biz} — un recepționer AI deja instruit pe serviciile, prețurile și programul dumneavoastră. Răspunde instant la întrebările clienților și face programări 24/7, inclusiv când sunteți închiși.
+
+Încercați-l de pe telefon (60 de secunde): {LINK}
+
+Încercați să-l păcăliți — întrebați-l exact ce vă întreabă clienții.
+
+Dacă vă place ce vedeți, îl pot instala pe site-ul real într-o săptămână. Dacă nu, nicio problemă — demo-ul a fost gratuit și mi-a făcut plăcere oricum.
+
+Toate cele bune,
+${cfg.agency}`,
+    follow: `${hi} Revin cu demo-ul pentru ${biz} — e încă activ aici: {LINK}
+
+Un detaliu care merită încercat: apasă „🌙 modul după program” din partea de sus. Asta e partea care contează cel mai mult — continuă să facă programări când sunteți închiși, când fiecare apel ratat e un client câștigat de concurență.
+
+Dacă nu e momentul potrivit, nicio problemă. Să revin luna viitoare?`,
+  };
+}
+
+let demoUrl = '';
+function rebuild() {
+  const cfg = buildCfg();
+  demoUrl = new URL('demo.html', location.href).href + '#' + encodeCfg(cfg);
+  $('linkBox').textContent = demoUrl;
+  const o = cfg.lang === 'ro' ? outreachRO(cfg) : outreachEN(cfg);
+  const ph = cfg.lang === 'ro' ? '[linkul tău scurtat de demo]' : '[your shortened demo link]';
+  $('o_dm').textContent = o.dm.replace(/\{LINK\}/g, ph);
+  $('o_email').textContent = o.email.replace(/\{LINK\}/g, ph);
+  $('o_follow').textContent = o.follow.replace(/\{LINK\}/g, ph);
 }
 F.forEach(id => $(id).addEventListener('input', rebuild));
 rebuild();
@@ -363,7 +470,9 @@ $('copyLinkBtn').addEventListener('click', e => {
 });
 document.querySelectorAll('[data-copy]').forEach(btn => {
   btn.addEventListener('click', () => {
-    const text = $(btn.dataset.copy).textContent.replace(/\[your shortened demo link\]/g, demoUrl);
+    const text = $(btn.dataset.copy).textContent
+      .replace(/\[your shortened demo link\]/g, demoUrl)
+      .replace(/\[linkul tău scurtat de demo\]/g, demoUrl);
     navigator.clipboard.writeText(text).then(() => flashCopied(btn));
   });
 });
